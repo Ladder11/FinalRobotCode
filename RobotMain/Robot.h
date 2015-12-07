@@ -7,6 +7,18 @@
  * @author Jordan Burklund
 **/
 #include "RobotConstants.h"
+#include "Arduino.h"
+
+class Robot {
+public:
+  static Robot* getInstance();
+  void initializeSubsystems();
+
+private:
+  //Private Constructor for singleton
+  Robot();
+  static Robot* instance;
+};
 
 
 #endif
