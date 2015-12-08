@@ -12,6 +12,7 @@
 #include "Drivetrain.h"
 #include "ultrasonic.h"
 #include "FlameSense.h"
+#include <LiquidCrystal.h>
 
 class Robot {
 public:
@@ -21,6 +22,9 @@ public:
   ultrasonic* rightSensor = new ultrasonic(US_RIGHT_INPUT_PIN, US_RIGHT_OUTPUT_PIN);
   ultrasonic* frontSensor = new ultrasonic(US_FRONT_INPUT_PIN, US_FRONT_OUTPUT_PIN);
   FlameSense* flameSense = new FlameSense(40, 30, frontSensor);
+
+  LiquidCrystal* lcd = new LiquidCrystal(40, 41, 42, 43, 44, 45);
+
   void initializeSubsystems();
 
 private:
