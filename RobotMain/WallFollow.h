@@ -1,19 +1,22 @@
 #ifndef WALLFOLLOW
 #define WALLFOLLOW
 #include <Arduino.h>
-#include "ultrasonic.h"
-#include "Drivetrain.h"
+#include "Robot.h"
+#include "Command.h"
 
-class WallFollow {
+
+class WallFollow : public Command {
 public:
-  WallFollow(Drivetrain* drivetrain, ultrasonic* leftSensor, ultrasonic* rightSensor);
+  WallFollow(int setpoint);
   void initialize();
-  void followLeftWall();
-  void followRightWall(float set);
+  void execute();
+  bool isFinished();
+  void end();
 private:
-  Drivetrain* _drivetrain;
-  ultrasonic* _rUS;
-  ultrasonic* _lUS;
+  Robot* ladder11;
+  bool isTurning;
+  long turnStartTime;
+  float _setpoint;
 };
 
 
