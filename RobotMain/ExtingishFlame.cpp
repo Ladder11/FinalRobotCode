@@ -22,7 +22,7 @@ bool ExtingishFlame::isFinished() {
 }
 
 void ExtingishFlame::end() {
-	ladder11->lcd->clear();
-	ladder11->lcd->print("DONE");
+	//ladder11->lcd->clear();
+	//ladder11->lcd->print("DONE");
 	prop.write(0);
 }
