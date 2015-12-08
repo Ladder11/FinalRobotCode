@@ -11,7 +11,8 @@ void WallFollow::initialize() {
 
 void WallFollow::execute() {
 	if ((ladder11->frontSensor->distance() > _setpoint) && !isTurning) { // If the front sensor doesn't see a wall, and the robot isn't supposed to be turning
-		ladder11->drivetrain->drive(3.5, 12*(_setpoint-ladder11->rightSensor->distance()));
+		turnSpeed = constrain(12*(_setpoint-ladder11->rightSensor->distance()), -40, 40);
+		ladder11->drivetrain->drive(3.5, turnSpeed);
 	} else {
 		if (isTurning) { // If the robot is in the middle of a turn
 			if (getTime() > (turnStartTime + 2000)) {// Is the turn done?
