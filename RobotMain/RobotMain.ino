@@ -7,9 +7,10 @@
 
 #include "Robot.h"
 #include "Scheduler.h"
+#include "Drivetrain.h"
 
 Scheduler* scheduler = Scheduler::getInstance();
-Robot* ladder11 = Robot:: getInstance();
+Robot* ladder11 = Robot::getInstance();
 
 void setup() {
   ladder11->initializeSubsystems();

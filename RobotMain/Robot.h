@@ -8,10 +8,15 @@
 **/
 #include "RobotConstants.h"
 #include "Arduino.h"
+#include "RegulatedMotor.h"
+#include "Drivetrain.h"
 
 class Robot {
 public:
   static Robot* getInstance();
+  RegulatedMotor* leftRegMotor;
+  RegulatedMotor* rightRegMotor;
+  Drivetrain* drivetrain;
   void initializeSubsystems();
 
 private:
