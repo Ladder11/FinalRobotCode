@@ -31,6 +31,6 @@ bool WallFollow::isFinished() {
 }
 
 void WallFollow::end() {
-	ladder11->lcd->print("Fuck this");
+	ladder11->lcd->print("Done wall");
 	ladder11->drivetrain->stop();
 }

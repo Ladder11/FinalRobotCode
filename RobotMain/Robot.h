@@ -21,7 +21,7 @@ public:
   ultrasonic* leftSensor = new ultrasonic(US_LEFT_INPUT_PIN, US_LEFT_OUTPUT_PIN);
   ultrasonic* rightSensor = new ultrasonic(US_RIGHT_INPUT_PIN, US_RIGHT_OUTPUT_PIN);
   ultrasonic* frontSensor = new ultrasonic(US_FRONT_INPUT_PIN, US_FRONT_OUTPUT_PIN);
-  FlameSense* flameSense = new FlameSense(40, 30, frontSensor);
+  FlameSense* flameSense = new FlameSense(40, 30);
 
   LiquidCrystal* lcd = new LiquidCrystal(40, 41, 42, 43, 44, 45);
 

@@ -21,6 +21,6 @@ bool ApproachFlame::isFinished() {
 }
 
 void ApproachFlame::end() {
-	ladder11->lcd->print("Fuck this");
+	ladder11->lcd->print("Flame ahead");
 	ladder11->drivetrain->stop();
 }

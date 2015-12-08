@@ -6,15 +6,14 @@
 
 class FlameSense {
 	public: 
-		FlameSense(int xDegrees, int yDegrees, ultrasonic* frontSensor);
+		FlameSense(int xDegrees, int yDegrees);
 		void initialize();
 		bool isFlame();
 		float flameAngle();
-		float flameHeight();
+		float flameHeightSin();
 		float flameDistance();
 	private:
 		float _xAngleComp, _yAngleComp;
-		ultrasonic* _frontSensor;
 		PVision ircam;
 };
 #endif
