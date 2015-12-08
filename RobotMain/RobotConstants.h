@@ -30,4 +30,6 @@ const float gearboxRatio = 50;
 const int encoderCounts = 64;
 const float scaleFactor = 60000.0/(float)encoderCounts/gearboxRatio;
 
+const int PROP_PIN = 11;
+
 #endif
