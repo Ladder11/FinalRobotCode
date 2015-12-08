@@ -13,7 +13,11 @@ void ApproachFlame::execute() {
     if (distSpeed > 5) {
       distSpeed = 5;
     }
+    if (distSpeed < 1.5) {
+      distSpeed = 1.5;
+    }
     ladder11->drivetrain->drive(distSpeed, ladder11->flameSense->flameAngle()*180/3.1415*4);
+    ladder11->drivetrain->updateRobotPos();
 }
 
 bool ApproachFlame::isFinished() {
@@ -21,6 +25,6 @@ bool ApproachFlame::isFinished() {
 }
 
 void ApproachFlame::end() {
-	ladder11->lcd->print("Flame ahead");
+	ladder11->lcd->print("Flame aheado");
 	ladder11->drivetrain->stop();
 }
