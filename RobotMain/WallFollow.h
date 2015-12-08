@@ -7,14 +7,14 @@
 
 class WallFollow : public Command {
 public:
-  WallFollow(int setpoint);
+  WallFollow(float setpoint);
   void initialize();
   void execute();
   bool isFinished();
   void end();
 private:
   Robot* ladder11;
-  bool isTurning;
+  bool isTurning = false;
   long turnStartTime;
   float _setpoint;
 };
