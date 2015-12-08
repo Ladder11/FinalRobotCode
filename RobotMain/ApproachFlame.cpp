@@ -10,8 +10,8 @@ void ApproachFlame::initialize() {
 
 void ApproachFlame::execute() {
 	distSpeed = .25*(ladder11->frontSensor->distance()-20);
-    if (distSpeed > 6) {
-      distSpeed = 6;
+    if (distSpeed > 5) {
+      distSpeed = 5;
     }
     ladder11->drivetrain->drive(distSpeed, ladder11->flameSense->flameAngle()*180/3.1415*4);
 }
