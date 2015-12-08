@@ -15,10 +15,10 @@ const int US_LEFT_OUTPUT_PIN = 29;
 
 const int ENC_LEFT_SS = 23;
 const int ENC_RIGHT_SS = 22;
-const int MOTOR_LEFT_F_PIN = 6;
-const int MOTOR_LEFT_R_PIN = 7;
-const int MOTOR_RIGHT_F_PIN = 4;
-const int MOTOR_RIGHT_R_PIN = 5;
+const int MOTOR_LEFT_F_PIN = 7;
+const int MOTOR_LEFT_R_PIN = 6;
+const int MOTOR_RIGHT_F_PIN = 5;
+const int MOTOR_RIGHT_R_PIN = 4;
 
 const float gearRatio = 0.3;
 const float trackWidth = 5.3125;
