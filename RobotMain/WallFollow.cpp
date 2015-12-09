@@ -25,22 +25,14 @@ void WallFollow::execute() {
     }
     ladder11->drivetrain->drive(0, 50);
   }
-
-  if (getTime()%500 < 250) {
-    digitalWrite(8, LOW);
-    digitalWrite(9, HIGH);
-  } else {
-    digitalWrite(8, HIGH);
-    digitalWrite(9, LOW);
-  }
 }
 
 bool WallFollow::isFinished() {
-
 	return ladder11->flameSense->isFlame() && !isTurning;
 }
 
 void WallFollow::end() {
 	ladder11->lcd->print("Done wall");
 	ladder11->drivetrain->stop();
+  ladder11->lights->setLightBarBlink();
 }
