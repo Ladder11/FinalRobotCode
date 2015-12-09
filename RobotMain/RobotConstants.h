@@ -30,4 +30,6 @@ const float gearboxRatio = 50;
 const int encoderCounts = 64;
 const float scaleFactor = 60000.0/(float)encoderCounts/gearboxRatio;
 
+const float USER_BUTTON_PIN = 21;  //#TODO update with actual value
+
 #endif
