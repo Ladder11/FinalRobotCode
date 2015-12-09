@@ -12,12 +12,14 @@
 #include "ApproachFlame.h"
 #include "ExtingishFlame.h"
 #include "CalculateFlamePosition.h"
+#include "WaitUntilPressed.h"
 
 Scheduler* scheduler = Scheduler::getInstance();
 Robot* ladder11 = Robot::getInstance();
 
 void setup() {
   ladder11->initializeSubsystems();
+  scheduler->addCommand(new WaitUntilPressed());
   scheduler->addCommand(new WallFollow(8.0));
   scheduler->addCommand(new ApproachFlame());
   scheduler->addCommand(new CalculateFlamePosition());
