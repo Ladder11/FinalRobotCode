@@ -13,6 +13,7 @@
 #include "ultrasonic.h"
 #include "FlameSense.h"
 #include <LiquidCrystal.h>
+#include "UserButton.h"
 
 class Robot {
 public:
@@ -24,6 +25,7 @@ public:
   FlameSense* flameSense = new FlameSense(40, 30);
 
   LiquidCrystal* lcd = new LiquidCrystal(40, 41, 42, 43, 44, 45);
+  UserButton* startButton = new UserButton(USER_BUTTON_PIN);
 
   void initializeSubsystems();
 
