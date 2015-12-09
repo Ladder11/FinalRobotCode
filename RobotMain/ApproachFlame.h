@@ -1,22 +1,20 @@
-#ifndef WALLFOLLOW
-#define WALLFOLLOW
+#ifndef APPROACHFLAME
+#define APPROACHFLAME
 #include <Arduino.h>
 #include "Robot.h"
 #include "Command.h"
 
 
-class WallFollow : public Command {
+class ApproachFlame : public Command {
 public:
-  WallFollow(float setpoint);
+  ApproachFlame();
   void initialize();
   void execute();
   bool isFinished();
   void end();
 private:
   Robot* ladder11;
-  bool isTurning = false;
-  long turnStartTime;
-  float _setpoint, turnSpeed;
+  float distSpeed;
 };
 
 

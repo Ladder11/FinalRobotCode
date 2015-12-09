@@ -9,14 +9,14 @@
 const int US_RIGHT_INPUT_PIN = 24;
 const int US_RIGHT_OUTPUT_PIN = 25;
 const int US_FRONT_INPUT_PIN = 26;
-const int US_FRONT_OUPUT_PIN = 27;
+const int US_FRONT_OUTPUT_PIN = 27;
 const int US_LEFT_INPUT_PIN = 28;
 const int US_LEFT_OUTPUT_PIN = 29;
 
 const int ENC_LEFT_SS = 23;
 const int ENC_RIGHT_SS = 22;
-const int MOTOR_LEFT_F_PIN = 6;
-const int MOTOR_LEFT_R_PIN = 7;
+const int MOTOR_LEFT_F_PIN = 7;
+const int MOTOR_LEFT_R_PIN = 6;
 const int MOTOR_RIGHT_F_PIN = 4;
 const int MOTOR_RIGHT_R_PIN = 5;
 
@@ -31,5 +31,6 @@ const int encoderCounts = 64;
 const float scaleFactor = 60000.0/(float)encoderCounts/gearboxRatio;
 
 const float USER_BUTTON_PIN = 21;  //#TODO update with actual value
+const int PROP_PIN = 11;
 
 #endif
