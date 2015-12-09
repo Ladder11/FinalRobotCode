@@ -15,6 +15,8 @@ RegulatedMotor::RegulatedMotor(int motorFPin, int motorRPin, int encoderSS) {
  * Assumes that the motor and encoder have already been initialized
  **/
 void RegulatedMotor::initialize() { 
+	_motor->initialize();
+	_encoder->initialize();
 }
 
 /**

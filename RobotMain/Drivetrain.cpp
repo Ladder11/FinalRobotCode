@@ -16,6 +16,8 @@ Drivetrain::Drivetrain() {
  * Assumes that the motors have been initialized
  **/
 void Drivetrain::initialize() {
+	leftMotor->initialize();
+	rightMotor->initialize();
 	xPos = 0;
 	yPos = 0;
 	prevLeft = 0;

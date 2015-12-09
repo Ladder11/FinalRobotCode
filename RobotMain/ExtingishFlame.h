@@ -1,22 +1,21 @@
-#ifndef WALLFOLLOW
-#define WALLFOLLOW
+#ifndef EXTINGUISHFLAME
+#define EXTINGUISHFLAME
 #include <Arduino.h>
 #include "Robot.h"
 #include "Command.h"
+#include <Servo.h>
 
 
-class WallFollow : public Command {
+class ExtingishFlame : public Command {
 public:
-  WallFollow(float setpoint);
+  ExtingishFlame();
   void initialize();
   void execute();
   bool isFinished();
   void end();
 private:
   Robot* ladder11;
-  bool isTurning = false;
-  long turnStartTime;
-  float _setpoint, turnSpeed;
+  Servo prop;
 };
 
 

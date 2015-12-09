@@ -25,5 +25,7 @@ Robot* Robot::getInstance() {
 /** Calls initialize methods for all subsystems
   **/
 void Robot::initializeSubsystems() {
-
+  drivetrain->initialize();
+  flameSense->initialize();
+  lcd->begin(16, 2);
 }
