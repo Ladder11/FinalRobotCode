@@ -17,7 +17,6 @@ void CalculateFlamePosition::execute() {
 }
 
 bool CalculateFlamePosition::isFinished() {
-
 	return true;
 }
 
@@ -32,7 +31,4 @@ void CalculateFlamePosition::end() {
 	ladder11->lcd->setCursor(0, 1);
 	ladder11->lcd->print("Z: ");
 	ladder11->lcd->print(candleZPos, DEC);
-	ladder11->lcd->setCursor(8, 1);
-	ladder11->lcd->print(" T: ");
-	ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst(), DEC);
 }
