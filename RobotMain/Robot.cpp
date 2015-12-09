@@ -28,4 +28,5 @@ void Robot::initializeSubsystems() {
   drivetrain->initialize();
   flameSense->initialize();
   lcd->begin(16, 2);
+  startButton->initialize();
 }
