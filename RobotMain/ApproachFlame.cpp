@@ -9,14 +9,16 @@ void ApproachFlame::initialize() {
   pinMode(33, OUTPUT);
   pinMode(34, OUTPUT);
   pinMode(35, OUTPUT);
+  pinMode(46, OUTPUT);
+  pinMode(47, OUTPUT);
   pinMode(48, OUTPUT);
   pinMode(49, OUTPUT);
-  pinMode(50, OUTPUT);
-  pinMode(51, OUTPUT);
+  digitalWrite(8, LOW);
+  digitalWrite(9, LOW);
   digitalWrite(33, LOW);
   digitalWrite(35, LOW);
-  digitalWrite(49, LOW);
-  digitalWrite(51, LOW);
+  digitalWrite(47, LOW);
+  digitalWrite(59, LOW);
 }
 
 void ApproachFlame::execute() {
@@ -36,15 +38,19 @@ void ApproachFlame::execute() {
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->frontSensor->distance(), DEC);
   if (getTime()%500 < 250) {
+    digitalWrite(8, LOW);
+    digitalWrite(9, LOW);
     digitalWrite(32, HIGH);
     digitalWrite(34, HIGH);
+    digitalWrite(46, HIGH);
     digitalWrite(48, HIGH);
-    digitalWrite(50, HIGH);
   } else {
+    digitalWrite(8, HIGH);
+    digitalWrite(9, HIGH);
     digitalWrite(32, LOW);
     digitalWrite(34, LOW);
+    digitalWrite(46, LOW);
     digitalWrite(48, LOW);
-    digitalWrite(50, LOW);
   }
 }
 
@@ -57,6 +63,6 @@ void ApproachFlame::end() {
 	ladder11->drivetrain->stop();
   digitalWrite(32, LOW);
   digitalWrite(34, LOW);
+  digitalWrite(46, LOW);
   digitalWrite(48, LOW);
-  digitalWrite(50, LOW);
 }
