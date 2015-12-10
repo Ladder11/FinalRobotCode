@@ -10,6 +10,8 @@ void WallFollowToStart::initialize() {
 }
 
 void WallFollowToStart::execute() {
+
+	
 	if ((ladder11->frontSensor->distance() > _setpoint) && !isTurning) { // If the front sensor doesn't see a wall, and the robot isn't supposed to be turning
 		ladder11->drivetrain->drive(3.5, 12*(_setpoint-ladder11->rightSensor->distance()));
 	} else {
