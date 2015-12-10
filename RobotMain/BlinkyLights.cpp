@@ -1,5 +1,15 @@
+/** 
+ * Subsystem that handles the various LEDs on the robot
+ * @author Hans Johnson
+ * @date Dec. 2015
+ **/
+
 #include "BlinkyLights.h"
 
+/** 
+ * Constructor
+ * Sets up the appropriate pins
+ **/
 BlinkyLights::BlinkyLights() {
 	pinMode(BL_LEFT_FRONT, OUTPUT);
   pinMode(BL_RIGHT_FRONT, OUTPUT);
@@ -15,6 +25,9 @@ BlinkyLights::BlinkyLights() {
   pinMode(LB_RIGHT, OUTPUT);
 }
 
+/** 
+ * Sets all the pins to low, turning all lights off
+ **/
 void BlinkyLights::initialize() {
 	digitalWrite(BL_LEFT_FRONT, LOW);
   digitalWrite(BL_RIGHT_FRONT, LOW);
@@ -29,6 +42,9 @@ void BlinkyLights::initialize() {
   digitalWrite(LB_RIGHT, LOW);
 }
 
+/** 
+ * Turns on the left side red LED strip if parameter is true
+ **/
 void BlinkyLights::leftBar(bool on) {
 	if (on) {
 		digitalWrite(LB_LEFT, HIGH);
@@ -38,6 +54,9 @@ void BlinkyLights::leftBar(bool on) {
 
 }
 
+/** 
+ * Turns on the right side red LED strip if parameter is true
+ **/
 void BlinkyLights::rightBar(bool on) {
 	if (on) {
 		digitalWrite(LB_RIGHT, HIGH);
@@ -46,6 +65,9 @@ void BlinkyLights::rightBar(bool on) {
 	}
 }
 
+/** 
+ * Turns on the left side yellow turn signal LEDs if parameter is true
+ **/
 void BlinkyLights::leftBlinkers(bool on) {
 	if (on) {
 		digitalWrite(BL_LEFT_FRONT, HIGH);
@@ -56,6 +78,9 @@ void BlinkyLights::leftBlinkers(bool on) {
 	}
 }
 
+/** 
+ * Turns on the right side yellow turn signal LEDs if parameter is true
+ **/
 void BlinkyLights::rightBlinkers(bool on) {
 	if (on) {
 		digitalWrite(BL_RIGHT_FRONT, HIGH);
@@ -66,10 +91,16 @@ void BlinkyLights::rightBlinkers(bool on) {
 	}
 }
 
+/**
+ * Sets variable that controls the blinking of the red LED strip
+ **/
 void BlinkyLights::setLightBarBlink() {
 	lightBar = true;
 }
 
+/**
+ * @return bool The value of the LED strip control variable
+ **/
 bool BlinkyLights::getLightBarBlink() {
 	return lightBar;
 }

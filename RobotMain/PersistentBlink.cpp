@@ -1,3 +1,9 @@
+/** 
+ * Command that controls the blinking of the various LEDs on the robot
+ * @author Hans Johnson
+ * @date Dec. 2015
+ **/
+
 #include "PersistentBlink.h"
 
 PersistentBlink::PersistentBlink() : Command("Persistent Blink"){
@@ -8,6 +14,9 @@ void PersistentBlink::initialize() {
 	
 }
 
+/** 
+ * Blinks the LED strip if it is supposed to, just the yellow turn signals otherwise
+ **/
 void PersistentBlink::execute() {
 	if (ladder11->lights->getLightBarBlink()) {
 		if (getTime()%500 > 250) {
@@ -34,6 +43,9 @@ void PersistentBlink::execute() {
 
 }
 
+/**
+ * Never ends
+ **/
 bool PersistentBlink::isFinished() {
 	return false;
 }
