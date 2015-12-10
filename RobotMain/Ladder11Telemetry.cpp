@@ -67,3 +67,11 @@ void Ladder11Telemetry::sendRobotPose(float x, float y, float theta) {
 		Serial.println(packet[i], DEC);
 	}
 }
+
+/** Returns a boolean if the robot should start.  Typically
+  * used to initially start the robot remotely
+  * @return True if the robot should start
+  **/
+boolean Ladder11Telemetry::shouldStart() {
+	return shouldStartFlag;
+}
