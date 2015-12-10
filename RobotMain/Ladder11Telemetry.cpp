@@ -34,9 +34,9 @@ uint8_t Ladder11Telemetry::calcChecksum(uint8_t packet[], int length) {
   * @param theta Theta value of the robot's current orientation
   **/
 void Ladder11Telemetry::sendRobotPose(float x, float y, float theta) {
-	uint8_t packet[13];
+	uint8_t packet[LEN_ROBOT_POSE];
 	packet[0] = START_BYTE;
-	packet[1] = 13;
+	packet[1] = LEN_ROBOT_POSE;
 	packet[2] = COMMAND_ROBOT_POSE;
 	//#TODO fix known negative issue
 	int intPart = (int) x;
@@ -60,9 +60,50 @@ void Ladder11Telemetry::sendRobotPose(float x, float y, float theta) {
 	packet[9] = (intPart >> 8) & 0xFF;
 	packet[10] = (uint8_t) (intPart & 0xFF);
 	packet[11] = (uint8_t) decPart;
-	packet[12] = calcChecksum(packet, 13);
+	packet[12] = calcChecksum(packet, LEN_ROBOT_POSE);
 
-	for(int i=0; i<13; i++) {
+	for(int i=0; i<LEN_ROBOT_POSE; i++) {
+		Serial3.write(packet[i]);
+		Serial.println(packet[i], DEC);
+	}
+}
+
+/** Sends the detected location of the flame
+  * @param x X location of the flame
+  * @param y Y location of the flame
+  * @param z Z position of the flame (height)
+  **/
+void Ladder11Telemetry::sendFlameLoc(float x, float y, float z) {
+	uint8_t packet[LEN_FLAME_LOC];
+	packet[0] = START_BYTE;
+	packet[1] = LEN_FLAME_LOC;
+	packet[2] = COMMAND_FLAME_LOC;
+	//#TODO fix known negative issue
+	int intPart = (int) x;
+	int decPart = ((int) (x*100.0)) - 100*intPart;
+	if(decPart < 0) 	//change to the correct sign
+		decPart *= -1; 
+	packet[3] = (intPart >> 8) & 0xFF;
+	packet[4] = (uint8_t) (intPart & 0xFF);
+	packet[5] = (uint8_t) decPart;
+	intPart = (int) y;
+	decPart = ((int) (y*100.0)) - 100*intPart;
+	if(decPart < 0) 	//change to the correct sign
+		decPart *= -1; 
+	packet[6] = (intPart >> 8) & 0xFF;
+	packet[7] = (uint8_t) (intPart & 0xFF);
+	packet[8] = (uint8_t) decPart;
+	intPart = (int) y;
+	decPart = ((int) (y*100.0)) - 100*intPart;
+	if(decPart < 0) 	//change to the correct sign
+		decPart *= -1; 
+	packet[9] = (intPart >> 8) & 0xFF;
+	packet[10] = (uint8_t) (intPart & 0xFF);
+	packet[11] = (uint8_t) decPart;
+	packet[12] = calcChecksum(packet, LEN_FLAME_LOC);
+
+	//Send the packet #TODO turn this into a method
+	for(int i=0; i<LEN_FLAME_LOC; i++) {
 		Serial3.write(packet[i]);
 		Serial.println(packet[i], DEC);
 	}
