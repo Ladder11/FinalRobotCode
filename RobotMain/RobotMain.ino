@@ -12,6 +12,7 @@
 #include "ApproachFlame.h"
 #include "ExtingishFlame.h"
 #include "CalculateFlamePosition.h"
+#include "Ladder11Telemetry.h"
 
 Scheduler* scheduler = Scheduler::getInstance();
 Robot* ladder11 = Robot::getInstance();
