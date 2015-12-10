@@ -38,6 +38,22 @@ void Ladder11Telemetry::sendPacket(uint8_t packet[], uint8_t length) {
 	}
 }
 
+/** Returns the upper 8-bits from the integer
+  * @param val Integer value to get the most significant 8 bits
+  * @return byte representing the upper 8 bits of the integer
+  **/
+uint8_t Ladder11Telemetry::getHighByte(int val) {
+	return (uint8_t) (val >>8);
+}
+
+/** Returns the lower 8-bits from the integer
+  * @param val Integer value to get the least significant 8 bits
+  * @return byte representing the lower 8 bits of the integer
+  **/
+uint8_t Ladder11Telemetry::getLowByte(int val) {
+	return (uint8_t) (val & 0xFF);
+}
+
 /** Sends the pose data of the robot composed of the
   * X, Y, and theta values of the robot's position in units of inches & degrees
   * @param x X value of the robot's current position
@@ -53,7 +69,7 @@ void Ladder11Telemetry::sendRobotPose(float x, float y, float theta) {
 	int intPart = (int) x;
 	int decPart = ((int) (x*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
-		decPart *= -1; decPart -= 0.01;  //fix the decimal
+		decPart *= -1;
 	}
 	packet[3] = (intPart >> 8) & 0xFF;
 	packet[4] = (uint8_t) (intPart & 0xFF);
@@ -61,7 +77,7 @@ void Ladder11Telemetry::sendRobotPose(float x, float y, float theta) {
 	intPart = (int) y;
 	decPart = ((int) (y*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
-		decPart *= -1; decPart -= 0.01;  //fix the decimal
+		decPart *= -1;
 	}
 	packet[6] = (intPart >> 8) & 0xFF;
 	packet[7] = (uint8_t) (intPart & 0xFF);
@@ -69,7 +85,7 @@ void Ladder11Telemetry::sendRobotPose(float x, float y, float theta) {
 	intPart = (int) theta;
 	decPart = ((int) (theta*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
-		decPart *= -1; decPart -= 0.01;  //fix the decimal
+		decPart *= -1;
 	}
 	packet[9] = (intPart >> 8) & 0xFF;
 	packet[10] = (uint8_t) (intPart & 0xFF);
@@ -93,7 +109,7 @@ void Ladder11Telemetry::sendFlameLoc(float x, float y, float z) {
 	int intPart = (int) x;
 	int decPart = ((int) (x*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
-		decPart *= -1; decPart -= 0.01;  //fix the decimal
+		decPart *= -1;
 	} 
 	packet[3] = (intPart >> 8) & 0xFF;
 	packet[4] = (uint8_t) (intPart & 0xFF);
@@ -101,7 +117,7 @@ void Ladder11Telemetry::sendFlameLoc(float x, float y, float z) {
 	intPart = (int) y;
 	decPart = ((int) (y*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
-		decPart *= -1; decPart -= 0.01;  //fix the decimal
+		decPart *= -1;
 	}
 	packet[6] = (intPart >> 8) & 0xFF;
 	packet[7] = (uint8_t) (intPart & 0xFF);
@@ -109,7 +125,7 @@ void Ladder11Telemetry::sendFlameLoc(float x, float y, float z) {
 	intPart = (int) y;
 	decPart = ((int) (y*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
-		decPart *= -1; decPart -= 0.01;  //fix the decimal
+		decPart *= -1;
 	}
 	packet[9] = (intPart >> 8) & 0xFF;
 	packet[10] = (uint8_t) (intPart & 0xFF);
@@ -150,7 +166,7 @@ void Ladder11Telemetry::sendBatteryVoltage(float voltage) {
 	int intPart = (int) voltage;
 	int decPart = ((int) (voltage*100)) - (intPart*100);
 	if(decPart < 0) {	//change to the correct sign
-		decPart *= -1; decPart -= 0.01;  //fix the decimal
+		decPart *= -1;
 	}
 	packet[3] = (uint8_t) ((intPart >>8) & 0xFF);
 	packet[4] = (uint8_t) (intPart & 0xFF);
