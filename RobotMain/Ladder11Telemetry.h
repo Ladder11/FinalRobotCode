@@ -21,7 +21,10 @@ public:
 	void sendStopped();
 	bool shouldStart();
 private:
-    uint8_t calcChecksum(uint8_t packet[], int length);
+    uint8_t calcChecksum(uint8_t packet[], uint8_t length);
+    void sendPacket(uint8_t packet[], uint8_t length);
+    uint8_t getHighByte(int val);
+    uint8_t getLowByte(int val);
     bool shouldStartFlag;
 };
 
