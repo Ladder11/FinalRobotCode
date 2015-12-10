@@ -14,7 +14,8 @@ public:
   void end();
 private:
   Robot* ladder11;
-  float flameDistance, height, candleXPos, candleYPos, candleZPos;
+  float flameDistance;
+  double height, candleXPos, candleYPos, candleZPos;
 };
 
 

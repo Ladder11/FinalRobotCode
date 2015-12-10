@@ -20,7 +20,11 @@
 #include "WallFollow.h"
 #include "ApproachFlame.h"
 #include "ExtingishFlame.h"
+<<<<<<< HEAD
 #include "WallFollowToStart.h"
+=======
+#include "CalculateFlamePosition.h"
+>>>>>>> refs/remotes/origin/master
 
 Scheduler* scheduler = Scheduler::getInstance();
 Robot* ladder11 = Robot::getInstance();
@@ -29,6 +33,7 @@ void setup() {
   ladder11->initializeSubsystems();
   scheduler->addCommand(new WallFollow(8.0));
   scheduler->addCommand(new ApproachFlame());
+  scheduler->addCommand(new CalculateFlamePosition());
   scheduler->addCommand(new ExtingishFlame());
   scheduler->addCommand(new WallFollowToStart(8.0));
 }
