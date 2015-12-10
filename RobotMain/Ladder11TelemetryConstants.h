@@ -17,3 +17,14 @@ const uint8_t COMMAND_GYRO_DATA = 0x07;
 const uint8_t COMMAND_STATUS = 0x08;
 const uint8_t COMMAND_RUNNING = 0x09;
 const uint8_t COMMAND_STOPPED = 0x0A;
+
+const uint8_t LEN_START = 4;
+const uint8_t LEN_STOP = 4;
+const uint8_t LEN_ROBOT_POSE = 13;
+const uint8_t LEN_FLAME_LOC = 13;
+const uint8_t LEN_CAMERA_DATA = 9;
+const uint8_t LEN_BATT_VOLT = 7;
+const uint8_t LEN_GYRO_DATA = 7;
+const uint8_t LEN_STATUS = 6;
+const uint8_t LEN_RUNNING = 4;
+const uint8_t LEN_STOPPED = 4;
