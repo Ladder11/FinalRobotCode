@@ -122,8 +122,8 @@ void Ladder11Telemetry::sendFlameLoc(float x, float y, float z) {
 	packet[6] = getHighByte(intPart);
 	packet[7] = getLowByte(intPart);
 	packet[8] = getLowByte(decPart);
-	intPart = (int) y;
-	decPart = ((int) (y*100.0)) - 100*intPart;
+	intPart = (int) z;
+	decPart = ((int) (z*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
 		decPart *= -1;
 	}
@@ -174,6 +174,67 @@ void Ladder11Telemetry::sendBatteryVoltage(float voltage) {
 	packet[6] = calcChecksum(packet, LEN_BATT_VOLT);
 
 	sendPacket(packet, LEN_BATT_VOLT);
+}
+
+/** Sends the gyro orientation
+  * @param z Rotation in degrees around the z axis
+  **/
+void Ladder11Telemetry::sendGyroOrientation(float z) {
+	uint8_t packet[LEN_GYRO_DATA];
+	packet[0] = START_BYTE;
+	packet[1] = LEN_GYRO_DATA;
+	packet[2] = COMMAND_GYRO_DATA;
+	int intPart = (int) z;
+	int decPart = ((int) (z*100)) - (intPart*100);
+	if(decPart < 0) {  //change to the correct sign
+		decPart *= -1;
+	}
+	packet[3] = getHighByte(intPart);
+	packet[4] = getLowByte(intPart);
+	packet[5] = getLowByte(decPart);
+	packet[6] = calcChecksum(packet, LEN_GYRO_DATA);
+
+	sendPacket(packet, LEN_GYRO_DATA);
+}
+
+/** Sends the current robot status
+  * @param status Status of the robot: e.g. wall following, extinguishing flame, etc.
+  * @param subStatus optional substatus of the robot: wall following turning left, etc.
+  **/
+void Ladder11Telemetry::sendStatus(uint8_t status, uint8_t substatus) {
+	uint8_t packet[LEN_STATUS];
+	packet[0] = START_BYTE;
+	packet[1] = LEN_STATUS;
+	packet[2] = COMMAND_STATUS;
+	packet[3] = status;
+	packet[4] = substatus;
+	packet[5] = calcChecksum(packet, LEN_STATUS);
+
+	sendPacket(packet, LEN_STATUS);
+}
+
+/** Sends a message that the robot is running
+  **/
+void Ladder11Telemetry::sendRunning() {
+	uint8_t packet[LEN_RUNNING];
+	packet[0] = START_BYTE;
+	packet[1] = LEN_RUNNING;
+	packet[2] = COMMAND_RUNNING;
+	packet[3] = calcChecksum(packet, LEN_RUNNING);
+
+	sendPacket(packet, LEN_RUNNING);
+}
+
+/** Sends a message that the robot has stopped
+  **/
+void Ladder11Telemetry::sendStopped() {
+	uint8_t packet[LEN_STOPPED];
+	packet[0] = START_BYTE;
+	packet[1] = LEN_STOPPED;
+	packet[2] = COMMAND_STOPPED;
+	packet[3] = calcChecksum(packet, LEN_STOPPED);
+
+	sendPacket(packet, LEN_STOPPED);
 }
 
 /** Returns a boolean if the robot should start.  Typically
