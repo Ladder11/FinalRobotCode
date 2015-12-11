@@ -71,25 +71,25 @@ void Ladder11Telemetry::sendRobotPose(float x, float y, float theta) {
 	if(decPart < 0) {	//change to the correct sign
 		decPart *= -1;
 	}
-	packet[3] = (intPart >> 8) & 0xFF;
-	packet[4] = (uint8_t) (intPart & 0xFF);
-	packet[5] = (uint8_t) decPart;
+	packet[3] = getHighByte(intPart);
+	packet[4] = getLowByte(intPart);
+	packet[5] = getLowByte(decPart);
 	intPart = (int) y;
 	decPart = ((int) (y*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
 		decPart *= -1;
 	}
-	packet[6] = (intPart >> 8) & 0xFF;
-	packet[7] = (uint8_t) (intPart & 0xFF);
-	packet[8] = (uint8_t) decPart;
+	packet[6] = getHighByte(intPart);
+	packet[7] = getLowByte(intPart);
+	packet[8] = getLowByte(decPart);
 	intPart = (int) theta;
 	decPart = ((int) (theta*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
 		decPart *= -1;
 	}
-	packet[9] = (intPart >> 8) & 0xFF;
-	packet[10] = (uint8_t) (intPart & 0xFF);
-	packet[11] = (uint8_t) decPart;
+	packet[9] = getHighByte(intPart);
+	packet[10] = getLowByte(intPart);
+	packet[11] = getLowByte(decPart);
 	packet[12] = calcChecksum(packet, LEN_ROBOT_POSE);
 
 	sendPacket(packet, LEN_ROBOT_POSE);
@@ -111,25 +111,25 @@ void Ladder11Telemetry::sendFlameLoc(float x, float y, float z) {
 	if(decPart < 0) {	//change to the correct sign
 		decPart *= -1;
 	} 
-	packet[3] = (intPart >> 8) & 0xFF;
-	packet[4] = (uint8_t) (intPart & 0xFF);
-	packet[5] = (uint8_t) decPart;
+	packet[3] = getHighByte(intPart);
+	packet[4] = getLowByte(intPart);
+	packet[5] = getLowByte(decPart);
 	intPart = (int) y;
 	decPart = ((int) (y*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
 		decPart *= -1;
 	}
-	packet[6] = (intPart >> 8) & 0xFF;
-	packet[7] = (uint8_t) (intPart & 0xFF);
-	packet[8] = (uint8_t) decPart;
+	packet[6] = getHighByte(intPart);
+	packet[7] = getLowByte(intPart);
+	packet[8] = getLowByte(decPart);
 	intPart = (int) y;
 	decPart = ((int) (y*100.0)) - 100*intPart;
 	if(decPart < 0) {	//change to the correct sign
 		decPart *= -1;
 	}
-	packet[9] = (intPart >> 8) & 0xFF;
-	packet[10] = (uint8_t) (intPart & 0xFF);
-	packet[11] = (uint8_t) decPart;
+	packet[9] = getHighByte(intPart);
+	packet[10] = getLowByte(intPart);
+	packet[11] = getLowByte(decPart);
 	packet[12] = calcChecksum(packet, LEN_FLAME_LOC);
 
 	sendPacket(packet, LEN_FLAME_LOC);
@@ -145,10 +145,10 @@ void Ladder11Telemetry::sendCameraData(int x, int y, uint8_t size) {
 	packet[0] = START_BYTE;
 	packet[1] = LEN_CAMERA_DATA;
 	packet[2] = COMMAND_CAMERA_DATA;
-	packet[3] = (uint8_t) ((x >> 8) & 0xFF);
-	packet[4] = (uint8_t) (x & 0xFF);
-	packet[5] = (uint8_t) ((y >> 8) & 0xFF);
-	packet[6] = (uint8_t) (y & 0xFF);
+	packet[3] = getHighByte(x);
+	packet[4] = getLowByte(x);
+	packet[5] = getHighByte(y);
+	packet[6] = getLowByte(y);
 	packet[7] = size;
 	packet[8] = calcChecksum(packet, LEN_CAMERA_DATA);
 
@@ -168,9 +168,9 @@ void Ladder11Telemetry::sendBatteryVoltage(float voltage) {
 	if(decPart < 0) {	//change to the correct sign
 		decPart *= -1;
 	}
-	packet[3] = (uint8_t) ((intPart >>8) & 0xFF);
-	packet[4] = (uint8_t) (intPart & 0xFF);
-	packet[5] = (uint8_t) decPart;
+	packet[3] = getHighByte(intPart);
+	packet[4] = getLowByte(intPart);
+	packet[5] = getLowByte(decPart);
 	packet[6] = calcChecksum(packet, LEN_BATT_VOLT);
 
 	sendPacket(packet, LEN_BATT_VOLT);
