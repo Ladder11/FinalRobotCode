@@ -28,3 +28,10 @@ const uint8_t LEN_GYRO_DATA = 7;
 const uint8_t LEN_STATUS = 6;
 const uint8_t LEN_RUNNING = 4;
 const uint8_t LEN_STOPPED = 4;
+
+const uint8_t STATUS_WAIT4START = 0x01;
+const uint8_t STATUS_WALLFOLLOW = 0x02;
+const uint8_t STATUS_APPROACH_FLAME = 0x03;
+const uint8_t STATUS_CALC_FLAME_LOC = 0x04;
+const uint8_t STATUS_EXT_FLAME = 0x05;
+const uint8_t STATUS_RETURN_HOME = 0x06;
