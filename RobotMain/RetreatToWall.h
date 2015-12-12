@@ -17,7 +17,7 @@ private:
   bool isTurning = false;
   long turnStartTime;
   float _setpoint, turnSpeed;
-  float distSpeed;
+  float distSpeed, xDelta, yDelta, thetaDesired;
 };
 
 
