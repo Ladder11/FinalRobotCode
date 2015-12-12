@@ -10,6 +10,10 @@ void RetreatToWall::initialize() {
 }
 
 void RetreatToWall::execute() {
+ 
+
+ 
+ 
  if (ladder11->frontSensor->distance()<100) {
     distSpeed = .25*(ladder11->frontSensor->distance()-20);
     if (distSpeed > 5) {
@@ -18,11 +22,11 @@ void RetreatToWall::execute() {
     if (distSpeed < 1.5) {
      distSpeed = 1.5;
     }
-    ladder11->drivetrain->drive(distSpeed, 0);
+    ladder11->drivetrain->drive(distSpeed, 15);
   } else {
     ladder11->drivetrain->drive(0, 40);
   }
-  ladder11->drivetrain->updateRobotPos();
+  
   //Print distance on the lcd screen. 
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->frontSensor->distance(), DEC);
@@ -46,7 +50,7 @@ void RetreatToWall::execute() {
 
 bool RetreatToWall::isFinished() {
 
-	return abs(ladder11->frontSensor->distance()<10);
+	return abs(ladder11->frontSensor->distance()<12);
 }
 
 void RetreatToWall::end() {
