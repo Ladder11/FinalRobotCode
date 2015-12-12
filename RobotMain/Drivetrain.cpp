@@ -55,20 +55,20 @@ double Drivetrain::getYOdoEst() {
 	return yPos;
 }
 
-double Drivetrain::getcandleFoundX() {
+double Drivetrain::getCandleFoundX() {
   return candleFoundX;
 }
 
-double Drivetrain::getcandleFoundY(){
+double Drivetrain::getCandleFoundY(){
   return candleFoundY;
 }
 
-void Drivetrain::setCandleFoundY(double loc){
-  candleFoundY=loc;
+void Drivetrain::setCandleFoundY(){
+  candleFoundY=yPos;
 }
 
-void Drivetrain::setCandleFoundX(double loc){
-  candleFoundX=loc;
+void Drivetrain::setCandleFoundX(){
+  candleFoundX=xPos;
 }
 /**
  * Assumes that the robot is facing along the +y axis when turned on
