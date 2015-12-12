@@ -35,8 +35,10 @@ void ApproachFlame::execute() {
     ladder11->drivetrain->drive(0, 50);
   }
   ladder11->drivetrain->updateRobotPos();
+  //Print distance on the lcd screen. 
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->frontSensor->distance(), DEC);
+  //This part is just for the LEDs
   if (getTime()%500 < 250) {
     digitalWrite(8, LOW);
     digitalWrite(9, LOW);
@@ -53,7 +55,7 @@ void ApproachFlame::execute() {
     digitalWrite(48, LOW);
   }
 }
-
+//End condition for approaching the flame is when the flame is within 10 degrees of center of the robot and within set distance
 bool ApproachFlame::isFinished() {
 	return (abs(ladder11->flameSense->flameAngle()*180/3.14) < 10) && (ladder11->frontSensor->distance() < 20);
 }

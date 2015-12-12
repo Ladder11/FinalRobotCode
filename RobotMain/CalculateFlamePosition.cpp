@@ -3,7 +3,8 @@
 CalculateFlamePosition::CalculateFlamePosition() : Command("Calculate Flame Position"){
 	ladder11 = Robot::getInstance();
 }
-
+//Does the trig/math for calculating the position of the flame
+//Takes our current robot position and adds relative position of the candle
 void CalculateFlamePosition::initialize() {
 	flameDistance = ladder11->frontSensor->distance();
 	candleXPos = ladder11->drivetrain->getXOdoEst() + sin(ladder11->drivetrain->getOrientOdoEst())*(flameDistance+6.5);

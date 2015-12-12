@@ -16,7 +16,7 @@ void ExtingishFlame::initialize() {
 void ExtingishFlame::execute() {
 
 }
-
+//End condition after 3 seconds of runtime
 bool ExtingishFlame::isFinished() {
 	return getTime() > 3000;
 }
