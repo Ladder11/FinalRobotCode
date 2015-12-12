@@ -41,8 +41,8 @@ bool WallFollow::isFinished() {
 }
 
 void WallFollow::end() {
-	ladder11->drivetrain->setCandleFoundX(ladder11->drivetrain->getXOdoEst());
-  ladder11->drivetrain->setCandleFoundY(ladder11->drivetrain->getYOdoEst());
+	ladder11->drivetrain->setCandleFoundX();
+  ladder11->drivetrain->setCandleFoundY();
 	ladder11->lcd->print("Done wall");
 	ladder11->drivetrain->stop();
 }
