@@ -15,6 +15,7 @@ void RetreatToWall::execute() {
  
  
  if (ladder11->frontSensor->distance()<100) {
+    
     distSpeed = .25*(ladder11->frontSensor->distance()-20);
     if (distSpeed > 5) {
     distSpeed = 5;
