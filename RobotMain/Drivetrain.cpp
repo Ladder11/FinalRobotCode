@@ -55,6 +55,21 @@ double Drivetrain::getYOdoEst() {
 	return yPos;
 }
 
+double Drivetrain::getcandleFoundX() {
+  return candleFoundX;
+}
+
+double Drivetrain::getcandleFoundY(){
+  return candleFoundY;
+}
+
+void Drivetrain::setCandleFoundY(double loc){
+  candleFoundY=loc;
+}
+
+void Drivetrain::setCandleFoundX(double loc){
+  candleFoundX=loc;
+}
 /**
  * Assumes that the robot is facing along the +y axis when turned on
  * @return float theta Deviation from the +y axis, in radians
