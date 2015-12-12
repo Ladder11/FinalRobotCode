@@ -22,8 +22,9 @@ void ApproachFlame::initialize() {
 }
 
 void ApproachFlame::execute() {
- delay(500);
+ //delay(500);
   if (ladder11->flameSense->isFlame()) {
+    //delay(100);
     distSpeed = .25*(ladder11->frontSensor->distance()-20);
     if (distSpeed > 5) {
     distSpeed = 5;
