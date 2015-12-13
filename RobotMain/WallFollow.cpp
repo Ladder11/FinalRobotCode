@@ -19,7 +19,7 @@ void WallFollow::execute() {
       ladder11->drivetrain->drive(3.5, turnSpeed);
   } else {
     if (isTurning) { // If the robot is in the middle of a turn
-    	if (getTime() > (turnStartTime + 3300)) {// Is the turn done?
+    	if (ladder11->rightSensor->distance()>6&&ladder11->rightSensor->distance()<10) {// Is the turn done?
     		isTurning = false;
     	}
     } else {

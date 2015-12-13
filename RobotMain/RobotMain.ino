@@ -1,10 +1,5 @@
 #include <PVision.h>
 
-
-
-
-
-
 #include <SPI.h>
 
 /** Main file that will be executed on the robot
