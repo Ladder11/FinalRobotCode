@@ -15,14 +15,14 @@ void WallFollowToStart::execute() {
       ladder11->drivetrain->drive(3.5, -turnSpeed);
   } else {
     if (isTurning) { // If the robot is in the middle of a turn
-     if (getTime() > (turnStartTime + 3300)) {// Is the turn done?
+     if (getTime() > (turnStartTime + 3500)) {// Is the turn done?
         isTurning = false;
       }
     } else {
       isTurning = true;
       turnStartTime = getTime();
     }
-    ladder11->drivetrain->drive(0, -40);
+    ladder11->drivetrain->drive(0, -25);
   }
 
   if (getTime()%500 < 250) {
@@ -41,7 +41,7 @@ void WallFollowToStart::execute() {
 
 bool WallFollowToStart::isFinished() {
 
-	return abs(ladder11->drivetrain->getXOdoEst())<5 && abs(ladder11->drivetrain->getYOdoEst()<5);
+	return abs(ladder11->drivetrain->getXOdoEst())<5 && abs(ladder11->drivetrain->getYOdoEst()<9);
 }
 
 void WallFollowToStart::end() {
