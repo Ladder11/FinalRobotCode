@@ -16,7 +16,7 @@ void RetreatToWall::initialize() {
 
 void RetreatToWall::execute() {
   angleDelta = thetaDesired-(ladder11->drivetrain->getOrientOdoEst())*1000;
-  turnSpeed = -0.1*angleDelta;
+  turnSpeed = -0.075*angleDelta;
   if (turnSpeed > 0) {
     if (turnSpeed < 25) {
       turnSpeed = 25;
@@ -26,7 +26,7 @@ void RetreatToWall::execute() {
       turnSpeed = -25;
     }
   }
-  ladder11->drivetrain->drive(0, -0.1*(angleDelta));
+  ladder11->drivetrain->drive(0, -0.075*(angleDelta));
   ladder11->drivetrain->updateRobotPos();
 }
 
@@ -36,11 +36,11 @@ bool RetreatToWall::isFinished() {
 
 void RetreatToWall::end() {
   ladder11->drivetrain->stop();
-  ladder11->lcd->clear();
-  ladder11->lcd->setCursor(0, 0);
-	ladder11->lcd->print(thetaDesired, DEC);
-  ladder11->lcd->setCursor(0, 1);
-  ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst()*1000, DEC);
-  ladder11->lcd->setCursor(8, 1);
-  ladder11->lcd->print(angleDelta, DEC);
+//  ladder11->lcd->clear();
+//  ladder11->lcd->setCursor(0, 0);
+//	ladder11->lcd->print(thetaDesired, DEC);
+//  ladder11->lcd->setCursor(0, 1);
+//  ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst()*1000, DEC);
+//  ladder11->lcd->setCursor(8, 1);
+//  ladder11->lcd->print(angleDelta, DEC);
 }

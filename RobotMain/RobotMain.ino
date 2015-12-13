@@ -23,6 +23,7 @@
 #include "WallFollowToStart.h"
 #include "CalculateFlamePosition.h"
 #include "RetreatToWall.h"
+#include "RetreatToWallStep2.h"
 
 Scheduler* scheduler = Scheduler::getInstance();
 Robot* ladder11 = Robot::getInstance();
@@ -35,7 +36,8 @@ void setup() {
   scheduler->addCommand(new CalculateFlamePosition());
   scheduler->addCommand(new ExtingishFlame());
   scheduler->addCommand(new RetreatToWall(8.0));
-  //scheduler->addCommand(new WallFollowToStart(8.0));
+  scheduler->addCommand(new RetreatToWallStep2(8.0));
+  scheduler->addCommand(new WallFollowToStart(8.0));
 }
 
 void loop() {
