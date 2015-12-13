@@ -70,6 +70,7 @@ void Drivetrain::setCandleFoundY(){
 void Drivetrain::setCandleFoundX(){
   candleFoundX=xPos;
 }
+
 /**
  * Assumes that the robot is facing along the +y axis when turned on
  * @return float theta Deviation from the +y axis, in radians
@@ -91,6 +92,13 @@ void Drivetrain::updateRobotPos() {
 	robotDelta = (leftDelta+rightDelta)/2*turnConversion;
 
 	_theta+=atan((leftDelta-rightDelta)*turnConversion/trackWidth);
+	if (_theta > 6.283) {
+		_theta -= 6.283;
+	} 
+
+	if (_theta < -6.283) {
+		_theta += 6.283;
+	}
 
 	xPos+=robotDelta*sin(_theta);
 	yPos+=robotDelta*cos(_theta);
