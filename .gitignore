@@ -1,3 +1,8 @@
 .build_ano/
 lib/
 src
+lib
+libraries
+.pioenvs/
+.travis.yml
+platformio.ini
