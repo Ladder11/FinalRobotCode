@@ -25,8 +25,8 @@ void RetreatToWallStep2::execute() {
       moveSpeed = 2.5;
     }
   } else {
-    if (moveSpeed > 4) {
-      moveSpeed = 4;
+    if (moveSpeed > 5) {
+      moveSpeed = 5;
     }
   }
   ladder11->drivetrain->drive(moveSpeed, 0);
