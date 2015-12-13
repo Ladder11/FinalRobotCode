@@ -40,6 +40,8 @@ void ApproachFlame::execute() {
   //Print distance on the lcd screen. 
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->frontSensor->distance(), DEC);
+  ladder11->lcd->setCursor(0,1);
+  ladder11->lcd->print(8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance())<14);
   //This part is just for the LEDs
   if (getTime()%500 < 250) {
     digitalWrite(8, LOW);
