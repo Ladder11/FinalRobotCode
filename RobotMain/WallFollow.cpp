@@ -37,7 +37,7 @@ void WallFollow::execute() {
 
 bool WallFollow::isFinished() {
 
-	return ladder11->flameSense->isFlame() && !isTurning && 8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance())<14;
+	return ladder11->flameSense->isFlame() && !isTurning && ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
 }
 
 void WallFollow::end() {
