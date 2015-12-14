@@ -27,8 +27,10 @@ void ApproachFlame::execute() {
     if (distSpeed > 5) {
     distSpeed = 5;
     }
-    if (distSpeed < 1.5) {
-     distSpeed = 1.5;
+    if (distSpeed < 1.5 && distSpeed > 0) {
+      distSpeed = 1.5;
+    } else if (distSpeed < 0) {
+      distSpeed = -1.5;
     }
     ladder11->drivetrain->drive(distSpeed, ladder11->flameSense->flameAngle()*180/3.1415*4);
   } else {
