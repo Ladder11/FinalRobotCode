@@ -25,7 +25,7 @@ void WallFollowToStart::execute() {
       isTurning = true;
       turnStartTime = getTime();
     }
-    ladder11->drivetrain->drive(0, -25);
+    ladder11->drivetrain->drive(0, -35);
   }
 
   if (getTime()%500 < 250) {
@@ -44,7 +44,7 @@ void WallFollowToStart::execute() {
 
 bool WallFollowToStart::isFinished() {
 
-	return abs(ladder11->drivetrain->getXOdoEst())<5 && abs(ladder11->drivetrain->getYOdoEst()<9);
+	return sqrt(sq(ladder11->drivetrain->getXOdoEst())+ladder11->drivetrain->getYOdoEst())<7;
 }
 
 void WallFollowToStart::end() {

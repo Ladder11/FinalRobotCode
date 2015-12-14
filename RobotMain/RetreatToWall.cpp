@@ -19,11 +19,11 @@ void RetreatToWall::execute() {
   turnSpeed = -0.075*angleDelta;
   if (turnSpeed > 0) {
     if (turnSpeed < 25) {
-      turnSpeed = 25;
+      turnSpeed = 35;
     }
   } else {
     if (turnSpeed > -25) {
-      turnSpeed = -25;
+      turnSpeed = -35;
     }
   }
   ladder11->drivetrain->drive(0, -0.075*(angleDelta));
