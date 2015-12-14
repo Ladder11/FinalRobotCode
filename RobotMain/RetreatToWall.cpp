@@ -14,7 +14,7 @@ void RetreatToWall::initialize() {
   // calculate theta to new position
   xDelta = ladder11->drivetrain->getCandleFoundX()-ladder11->drivetrain->getXOdoEst();
   yDelta = ladder11->drivetrain->getCandleFoundY()-ladder11->drivetrain->getYOdoEst();
-  thetaDesired = (tan(xDelta/yDelta)+3.1415)*1000;
+  thetaDesired = (tan(yDelta/xDelta))*1000;
   if (thetaDesired > 3141.5) {
     thetaDesired -= 6283;
   } 
@@ -32,14 +32,16 @@ void RetreatToWall::execute() {
   angleDelta = thetaDesired-(ladder11->drivetrain->getOrientOdoEst())*1000;
   turnSpeed = -0.075*angleDelta;
   if (turnSpeed > 0) {
-    if (turnSpeed < 35) {
-      turnSpeed = 35;
+    if (turnSpeed < 45) {
+      turnSpeed = 45;
     }
   } else {
-    if (turnSpeed > -35) {
-      turnSpeed = -35;
+    if (turnSpeed > -45) {
+      turnSpeed = -45;
     }
   }
+  ladder11->lcd->clear();
+  ladder11->lcd->print(angleDelta);
   ladder11->drivetrain->drive(0, -0.075*(angleDelta));
 //  ladder11->drivetrain->updateRobotPos();
 }
