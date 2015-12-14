@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include "Robot.h"
 #include "Command.h"
-
+#include "math.h"
 
 class RetreatToWallStep2 : public Command {
 public:
