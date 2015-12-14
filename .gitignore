@@ -1,8 +1,8 @@
 .build_ano/
 lib/
 src
-lib
+RobotMain/lib
 libraries
-.pioenvs/
-.travis.yml
-platformio.ini
+RobotMain/.pioenvs/
+RobotMain/.travis.yml
+RobotMain/platformio.ini
