@@ -14,13 +14,13 @@ void RetreatToWall::initialize() {
   // calculate theta to new position
   xDelta = ladder11->drivetrain->getCandleFoundX()-ladder11->drivetrain->getXOdoEst();
   yDelta = ladder11->drivetrain->getCandleFoundY()-ladder11->drivetrain->getYOdoEst();
-  thetaDesired = (tan(yDelta/xDelta))*1000;
-  if (thetaDesired > 3141.5) {
+  thetaDesired = (atan2(xDelta,yDelta))*1000;
+  /*if (thetaDesired > 3141.5) {
     thetaDesired -= 6283;
   } 
   if (thetaDesired < -3141.5) {
     thetaDesired += 6283;
-  }
+  }*/
   // turn to that position
   // drive to that position
 }
