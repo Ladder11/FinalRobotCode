@@ -1,9 +1,17 @@
+/**
+ * Command that calculates the position of the candle relative to the robot's starting location
+ * @author Hans Johnson
+ * @date Dec. 2015
+ **/
 #include "CalculateFlamePosition.h"
 
 CalculateFlamePosition::CalculateFlamePosition() : Command("Calculate Flame Position"){
 	ladder11 = Robot::getInstance();
 }
 
+/** 
+ * Does all the calculation, using drivetrain odometry, flame sensor data, and ultrasonic distance to candle
+ **/
 void CalculateFlamePosition::initialize() {
 	flameDistance = ladder11->frontSensor->distance();
 	candleXPos = ladder11->drivetrain->getXOdoEst() + sin(ladder11->drivetrain->getOrientOdoEst())*(flameDistance+6.5);
@@ -16,10 +24,16 @@ void CalculateFlamePosition::execute() {
 
 }
 
+/** 
+ * Only executes once
+ */
 bool CalculateFlamePosition::isFinished() {
 	return true;
 }
 
+/**
+ * Prints all data to the LCD screen
+ **/
 void CalculateFlamePosition::end() {
 	ladder11->lcd->clear();
 	ladder11->lcd->setCursor(0, 0);

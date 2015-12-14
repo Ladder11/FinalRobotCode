@@ -1,9 +1,17 @@
+/** 
+ * Command to run the motor/fan to extinguish the candle
+ * @author Hans Johnson
+ * @date Dec. 2015
+ **/
 #include "ExtingishFlame.h"
 
 ExtingishFlame::ExtingishFlame() : Command("Extingish Flame"){
 	ladder11 = Robot::getInstance();
 }
 
+/** 
+ * Sets up the servo object and arms the ESC
+ **/
 void ExtingishFlame::initialize() {
 	prop.attach(PROP_PIN, 1000, 2000);
 	prop.write(180);
@@ -17,12 +25,16 @@ void ExtingishFlame::execute() {
 
 }
 
-bool ExtingishFlame::isFinished() {
-	return getTime() > 3000;
+/**
+ * Runs for 3 seconds
+ **/ 
+bool ExtingishFlame::isFinished() { 
+	return getTime() > 3000; //#TODO: Check to make sure the flame is extinguished
 }
 
+/**
+ * Turn off the prop
+ **/
 void ExtingishFlame::end() {
-	//ladder11->lcd->clear();
-	//ladder11->lcd->print("DONE");
 	prop.write(0);
 }
