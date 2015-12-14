@@ -20,12 +20,16 @@ public:
 	void sendRunning();
 	void sendStopped();
 	bool shouldStart();
+	void readPacket();
 private:
     uint8_t calcChecksum(uint8_t packet[], uint8_t length);
     void sendPacket(uint8_t packet[], uint8_t length);
     uint8_t getHighByte(int val);
     uint8_t getLowByte(int val);
+    void parsePacket(uint8_t packet[], uint8_t length);
     bool shouldStartFlag;
+    bool processingPacket;
+    uint8_t readBuff[16];
 };
 
 
