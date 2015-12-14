@@ -19,7 +19,7 @@ private:
   float _setpoint, turnSpeed;
   float distSpeed;
   double xDelta, yDelta;
-  int thetaDesired, angleDelta;
+  int thetaDesired, angleDelta, currentAngle ;
 };
 
 

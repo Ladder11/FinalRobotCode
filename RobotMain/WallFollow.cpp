@@ -36,11 +36,13 @@ void WallFollow::execute() {
     digitalWrite(8, HIGH);
     digitalWrite(9, LOW);
   }
+  ladder11->lcd->clear();
+  ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst());
 }
 
 bool WallFollow::isFinished() {
 
-	return ladder11->flameSense->isFlame() && !isTurning && ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
+	return ladder11->flameSense->isFlame()&& ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
 }
 
 void WallFollow::end() {
