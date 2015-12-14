@@ -39,19 +39,20 @@ void WallFollowToStart::execute() {
     ladder11->drivetrain->drive(0, -35);
   }
 
-  ladder11->lcd->clear();
-  ladder11->lcd->setCursor(0,0);
-  ladder11->lcd->print(ladder11->drivetrain->getXOdoEst());
-  ladder11->lcd->setCursor(0,1);
-  ladder11->lcd->print(ladder11->drivetrain->getYOdoEst());
+  //ladder11->lcd->clear();
+  //ladder11->lcd->setCursor(0,0);
+  //ladder11->lcd->print(ladder11->drivetrain->getXOdoEst());
+  //ladder11->lcd->setCursor(0,1);
+//  ladder11->lcd->print(ladder11->drivetrain->getYOdoEst());
 }
 
 /**
  * Finished when the robot is within 7" of the origin
  **/
 bool WallFollowToStart::isFinished() {
-
-	return sqrt(sq(ladder11->drivetrain->getXOdoEst())+ladder11->drivetrain->getYOdoEst())<7;
+	ladder11->lcd->clear();
+	ladder11->lcd->print(sqrt(sq(ladder11->drivetrain->getXOdoEst())+ladder11->drivetrain->getYOdoEst()));
+	return sqrt(sq(ladder11->drivetrain->getXOdoEst())+ladder11->drivetrain->getYOdoEst())<5;
 }
 
 void WallFollowToStart::end() {
