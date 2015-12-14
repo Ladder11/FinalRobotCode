@@ -44,10 +44,10 @@ void WallFollowToStart::execute() {
 
 bool WallFollowToStart::isFinished() {
 
-	return sqrt(sq(ladder11->drivetrain->getXOdoEst())+sq(ladder11->drivetrain->getXOdoEst()))<6;
+	return abs(ladder11->drivetrain->getXOdoEst())<5 && abs(ladder11->drivetrain->getYOdoEst()<9);
 }
 
 void WallFollowToStart::end() {
-	ladder11->lcd->print(sqrt(sq(ladder11->drivetrain->getXOdoEst())+sq(ladder11->drivetrain->getXOdoEst())));
+	ladder11->lcd->print("Done wall");
 	ladder11->drivetrain->stop();
 }

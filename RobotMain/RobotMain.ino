@@ -17,12 +17,9 @@
 #include "ExtingishFlame.h"
 #include "WallFollowToStart.h"
 #include "CalculateFlamePosition.h"
-<<<<<<< HEAD
 #include "RetreatToWall.h"
 #include "RetreatToWallStep2.h"
-=======
 #include "PersistentBlink.h"
->>>>>>> refs/remotes/origin/master
 
 Scheduler* scheduler = Scheduler::getInstance();
 Robot* ladder11 = Robot::getInstance();

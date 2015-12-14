@@ -46,10 +46,13 @@ void WallFollow::execute() {
     digitalWrite(8, HIGH);
     digitalWrite(9, LOW);
   }
+<<<<<<< HEAD
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst());
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> parent of aa3db51... Changed end case of coming home
 }
 
 /** 
@@ -58,10 +61,14 @@ void WallFollow::execute() {
 bool WallFollow::isFinished() {
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 	return ladder11->flameSense->isFlame()&& ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
 =======
 	return ladder11->flameSense->isFlame() && !isTurning;
 >>>>>>> refs/remotes/origin/master
+=======
+	return ladder11->flameSense->isFlame() && !isTurning && ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
+>>>>>>> parent of aa3db51... Changed end case of coming home
 }
 
 /**
