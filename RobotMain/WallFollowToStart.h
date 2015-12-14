@@ -16,7 +16,7 @@ private:
   Robot* ladder11;
   bool isTurning = false;
   long turnStartTime;
-  float _setpoint, turnSpeed;
+  float _setpoint, turnSpeed, distErr, prevDistErr, output;
 };
 
 

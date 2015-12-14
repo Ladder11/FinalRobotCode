@@ -11,11 +11,14 @@ void WallFollowToStart::initialize() {
 
 void WallFollowToStart::execute() {
   if ((ladder11->frontSensor->distance() > _setpoint) && !isTurning) { // If the front sensor doesn't see a wall, and the robot isn't supposed to be turning
-      turnSpeed = constrain(9*(_setpoint-ladder11->leftSensor->distance()), -30, 30);
+      distErr = _setpoint-ladder11->leftSensor->distance();
+      output = 9*distErr + 3*(prevDistErr-distErr);
+      prevDistErr = distErr;
+      turnSpeed = constrain(output, -40, 40);
       ladder11->drivetrain->drive(3.5, -turnSpeed);
   } else {
     if (isTurning) { // If the robot is in the middle of a turn
-    if (ladder11->rightSensor->distance()>6&&ladder11->rightSensor->distance()<10) {// Is the turn done?
+    if (ladder11->rightSensor->distance()>6&&ladder11->leftSensor->distance()<10) {// Is the turn done?
         isTurning = false;
       }
     } else {
