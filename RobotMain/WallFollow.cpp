@@ -37,38 +37,17 @@ void WallFollow::execute() {
     }
     ladder11->drivetrain->drive(0, 40);
   }
-<<<<<<< HEAD
 
-  if (getTime()%500 < 250) {
-    digitalWrite(8, LOW);
-    digitalWrite(9, HIGH);
-  } else {
-    digitalWrite(8, HIGH);
-    digitalWrite(9, LOW);
-  }
-<<<<<<< HEAD
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst());
-=======
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> parent of aa3db51... Changed end case of coming home
+
 }
 
 /** 
  * Returns true when the flame sensor detects a flame
  **/
 bool WallFollow::isFinished() {
-<<<<<<< HEAD
-
-<<<<<<< HEAD
 	return ladder11->flameSense->isFlame()&& ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
-=======
-	return ladder11->flameSense->isFlame() && !isTurning;
->>>>>>> refs/remotes/origin/master
-=======
-	return ladder11->flameSense->isFlame() && !isTurning && ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
->>>>>>> parent of aa3db51... Changed end case of coming home
 }
 
 /**
@@ -79,9 +58,5 @@ void WallFollow::end() {
   ladder11->drivetrain->setCandleFoundY();
 	ladder11->lcd->print("Done wall");
 	ladder11->drivetrain->stop();
-<<<<<<< HEAD
-}
-=======
   ladder11->lights->setLightBarBlink();
 }
->>>>>>> refs/remotes/origin/master
