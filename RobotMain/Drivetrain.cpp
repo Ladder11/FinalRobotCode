@@ -92,11 +92,11 @@ void Drivetrain::updateRobotPos() {
 	robotDelta = (leftDelta+rightDelta)/2*turnConversion;
 
 	_theta+=atan((leftDelta-rightDelta)*turnConversion/trackWidth);
-	if (_theta > 6.283) {
+	if (_theta > 3.1415) {
 		_theta -= 6.283;
 	} 
 
-	if (_theta < -6.283) {
+	if (_theta < -3.1415) {
 		_theta += 6.283;
 	}
 
