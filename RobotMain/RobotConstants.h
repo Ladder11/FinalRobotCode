@@ -45,4 +45,6 @@ const int BL_RIGHT_REAR_GND = 33;
 const int LB_LEFT = 9;
 const int LB_RIGHT = 8;
 
+const float cameraHeight = 7.5;
+
 #endif

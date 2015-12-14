@@ -47,16 +47,16 @@ void WallFollow::execute() {
  * Returns true when the flame sensor detects a flame
  **/
 bool WallFollow::isFinished() {
-	return ladder11->flameSense->isFlame()&& ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
+  return ladder11->flameSense->isFlame() && ((cameraHeight+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
 }
 
 /**
  * Stops the robot and turns on the LED strip to indicate the flame is found
  **/
 void WallFollow::end() {
-	ladder11->drivetrain->setCandleFoundX();
+  ladder11->drivetrain->setCandleFoundX();
   ladder11->drivetrain->setCandleFoundY();
-	ladder11->lcd->print("Done wall");
-	ladder11->drivetrain->stop();
+  ladder11->lcd->print("Done wall");
+  ladder11->drivetrain->stop();
   ladder11->lights->setLightBarBlink();
 }

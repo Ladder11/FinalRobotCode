@@ -16,7 +16,7 @@ void CalculateFlamePosition::initialize() {
 	flameDistance = ladder11->frontSensor->distance();
 	candleXPos = ladder11->drivetrain->getXOdoEst() + sin(ladder11->drivetrain->getOrientOdoEst())*(flameDistance+6.5);
 	candleYPos = ladder11->drivetrain->getYOdoEst() + cos(ladder11->drivetrain->getOrientOdoEst())*(flameDistance+6.5);
-	candleZPos = 8.0+ladder11->flameSense->flameHeightSin()*flameDistance;
+	candleZPos = cameraHeight+ladder11->flameSense->flameHeightSin()*flameDistance;
 
 }
 
