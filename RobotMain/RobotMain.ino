@@ -33,7 +33,7 @@ void setup() {
   scheduler->addCommand(new CalculateFlamePosition());
   scheduler->addCommand(new ExtingishFlame());
   scheduler->addCommand(new RetreatToWall());
-  scheduler->addCommand(new RetreatToWallStep2(8.0));
+  scheduler->addCommand(new RetreatToWallStep2());
   scheduler->addCommand(new WallFollowToStart(8.0));
 }
 

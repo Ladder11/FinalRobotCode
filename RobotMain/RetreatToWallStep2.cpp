@@ -3,9 +3,8 @@
  **/
 #include "RetreatToWallStep2.h"
 
-RetreatToWallStep2::RetreatToWallStep2(float setpoint) : Command("Retreat to Wall"){
+RetreatToWallStep2::RetreatToWallStep2() : Command("Retreat to Wall"){
 	ladder11 = Robot::getInstance();
-	_setpoint = setpoint;
 }
 /**
  * Gets the destination coordinates
