@@ -24,18 +24,12 @@ void ExtingishFlame::initialize() {
 void ExtingishFlame::execute() {
 
 }
-<<<<<<< HEAD
-//End condition after 3 seconds of runtime
-bool ExtingishFlame::isFinished() {
-	return getTime() > 4500;
-=======
 
 /**
  * Runs for 3 seconds
  **/ 
 bool ExtingishFlame::isFinished() { 
 	return getTime() > 3000; //#TODO: Check to make sure the flame is extinguished
->>>>>>> refs/remotes/origin/master
 }
 
 /**
