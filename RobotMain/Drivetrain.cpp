@@ -1,11 +1,7 @@
 #include "Drivetrain.h"
 
 /** Constructor
-  * @param RegulatedMotor leftMotor The RegulatedMotor object that corresponds to the motor on the left side of the robot
-  * @param RegulatedMotor rightMotor The RegulatedMotor object that corresponds to the motor on the right side of the robot
-  * @param float wheelDia Diameter in inches of the drive wheels
-  * @param float gearRatio Torque ratio of the motor to drive wheels
-  * @param float trackWidth Width in inches of the drivetrain's track
+  * Creates regulated motor objects for the left and right side of the robot based on pin assigments in RobotConstants.h
   **/
 Drivetrain::Drivetrain() {
 	leftMotor = new RegulatedMotor(MOTOR_LEFT_F_PIN, MOTOR_LEFT_R_PIN, ENC_LEFT_SS);
@@ -13,7 +9,7 @@ Drivetrain::Drivetrain() {
 }
 
 /**
- * Assumes that the motors have been initialized
+ * Initializes motors
  **/
 void Drivetrain::initialize() {
 	leftMotor->initialize();
@@ -41,32 +37,53 @@ void Drivetrain::drive(float velocity, float turnVelocity) {
 	updateRobotPos();
 }
 
+/**
+ * Sets motor output speed directly to zero, bypassing the PID
+ **/
 void Drivetrain::stop() {
 	leftMotor->setRPM(0);
 	rightMotor->setRPM(0);
 	updateRobotPos();
 }
 
+/**
+ * @return Current X position of the robot, the left or right position relative to the origin based on robot coordinate system
+ **/
 double Drivetrain::getXOdoEst() {
 	return xPos;
 }
 
+/**
+ * @return Current Y position of the robot, the forward or reverse position relative to the origin based on the robot coordinate system
+ **/
 double Drivetrain::getYOdoEst() {
 	return yPos;
 }
 
+/**
+ * @return The X position of the robot when it first saw the candle
+ **/
 double Drivetrain::getCandleFoundX() {
   return candleFoundX;
 }
 
+/**
+ * @return The Y position of the robot when it first saw the candle
+ **/
 double Drivetrain::getCandleFoundY(){
   return candleFoundY;
 }
 
+/**
+ * Sets the Y position when the candle is found
+ **/
 void Drivetrain::setCandleFoundY(){
   candleFoundY=yPos;
 }
 
+/**
+ * Sets the X position when the candle is found
+ **/
 void Drivetrain::setCandleFoundX(){
   candleFoundX=xPos;
 }
