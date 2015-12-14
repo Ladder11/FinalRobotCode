@@ -37,7 +37,7 @@ void RetreatToWallStep2::execute() {
     }
   }
   ladder11->drivetrain->drive(moveSpeed, 0);
-  ladder11->drivetrain->updateRobotPos();
+//  ladder11->drivetrain->updateRobotPos();
   ladder11->lcd->clear();
   ladder11->lcd->setCursor(0,0);
   ladder11->lcd->print (sqrt(sq(xDelta)+sq(yDelta)));

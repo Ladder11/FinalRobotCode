@@ -36,7 +36,7 @@ void ApproachFlame::execute() {
   } else {
     ladder11->drivetrain->drive(0, 50);
   }
-  ladder11->drivetrain->updateRobotPos();
+//  ladder11->drivetrain->updateRobotPos();
   //Print distance on the lcd screen. 
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->frontSensor->distance(), DEC);
