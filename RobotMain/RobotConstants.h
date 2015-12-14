@@ -32,4 +32,17 @@ const float scaleFactor = 60000.0/(float)encoderCounts/gearboxRatio;
 
 const int PROP_PIN = 11;
 
+const int BL_LEFT_FRONT = 48;
+const int BL_LEFT_FRONT_GND = 49;
+const int BL_LEFT_REAR = 46;
+const int BL_LEFT_REAR_GND = 47;
+
+const int BL_RIGHT_FRONT = 34;
+const int BL_RIGHT_FRONT_GND = 35;
+const int BL_RIGHT_REAR = 32;
+const int BL_RIGHT_REAR_GND = 33;
+
+const int LB_LEFT = 9;
+const int LB_RIGHT = 8;
+
 #endif

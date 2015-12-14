@@ -1,15 +1,24 @@
+/** 
+ * Command to follow the wall using the ultrasonic sensor
+ * @author Garrison Hefter
+ * @date Dec. 2015
+ **/
+
 #include "WallFollow.h"
 
+/** 
+ * @param setpoint The distance in inches that the robot should stay from the wall
+ **/
 WallFollow::WallFollow(float setpoint) : Command("Wall Follow"){
 	ladder11 = Robot::getInstance();
 	_setpoint = setpoint;
 }
 
-void WallFollow::initialize() {
-  pinMode(8, OUTPUT);
-  pinMode(9, OUTPUT);
-}
+void WallFollow::initialize() {}
 
+/** 
+ * Uses proportional controller to control turn rate
+ **/
 void WallFollow::execute() {
   if ((ladder11->frontSensor->distance() > _setpoint) && !isTurning) { // If the front sensor doesn't see a wall, and the robot isn't supposed to be turning
       distErr = _setpoint-ladder11->rightSensor->distance();
@@ -28,6 +37,7 @@ void WallFollow::execute() {
     }
     ladder11->drivetrain->drive(0, 40);
   }
+<<<<<<< HEAD
 
   if (getTime()%500 < 250) {
     digitalWrite(8, LOW);
@@ -38,16 +48,33 @@ void WallFollow::execute() {
   }
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst());
+=======
+>>>>>>> refs/remotes/origin/master
 }
 
+/** 
+ * Returns true when the flame sensor detects a flame
+ **/
 bool WallFollow::isFinished() {
+<<<<<<< HEAD
 
 	return ladder11->flameSense->isFlame()&& ((8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<14);
+=======
+	return ladder11->flameSense->isFlame() && !isTurning;
+>>>>>>> refs/remotes/origin/master
 }
 
+/**
+ * Stops the robot and turns on the LED strip to indicate the flame is found
+ **/
 void WallFollow::end() {
 	ladder11->drivetrain->setCandleFoundX();
   ladder11->drivetrain->setCandleFoundY();
 	ladder11->lcd->print("Done wall");
 	ladder11->drivetrain->stop();
+<<<<<<< HEAD
 }
+=======
+  ladder11->lights->setLightBarBlink();
+}
+>>>>>>> refs/remotes/origin/master

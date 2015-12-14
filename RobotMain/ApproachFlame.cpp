@@ -1,26 +1,24 @@
+/** 
+ * Command to center the robot on the flame and drive to a particular distance away
+ * @author Hans Johnson
+ * @date Dec. 2015
+ **/
 #include "ApproachFlame.h"
+
+/**
+ * Constructor
+ **/
 
 ApproachFlame::ApproachFlame() : Command("Approach Flame"){
 	ladder11 = Robot::getInstance();
 }
 
-void ApproachFlame::initialize() {
-  pinMode(32, OUTPUT);
-  pinMode(33, OUTPUT);
-  pinMode(34, OUTPUT);
-  pinMode(35, OUTPUT);
-  pinMode(46, OUTPUT);
-  pinMode(47, OUTPUT);
-  pinMode(48, OUTPUT);
-  pinMode(49, OUTPUT);
-  digitalWrite(8, LOW);
-  digitalWrite(9, LOW);
-  digitalWrite(33, LOW);
-  digitalWrite(35, LOW);
-  digitalWrite(47, LOW);
-  digitalWrite(59, LOW);
-}
+void ApproachFlame::initialize() {}
 
+/**
+ * Uses a proportional controller for both linear speed and turn rate based on distance and angle to the candle
+ * Linear speed has max and min caps to ensure motion and turning ability
+ **/
 void ApproachFlame::execute() {
  //delay(500);
   if (ladder11->flameSense->isFlame()) {
@@ -40,6 +38,7 @@ void ApproachFlame::execute() {
   //Print distance on the lcd screen. 
   ladder11->lcd->clear();
   ladder11->lcd->print(ladder11->frontSensor->distance(), DEC);
+<<<<<<< HEAD
   ladder11->lcd->setCursor(0,1);
   ladder11->lcd->print(8.0+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance())<14);
   //This part is just for the LEDs
@@ -60,15 +59,30 @@ void ApproachFlame::execute() {
   }
 }
 //End condition for approaching the flame is when the flame is within 10 degrees of center of the robot and within set distance
+=======
+
+}
+
+/** 
+ * Returns true if the angle and distance are within tolerance
+ **/
+>>>>>>> refs/remotes/origin/master
 bool ApproachFlame::isFinished() {
 	return (abs(ladder11->flameSense->flameAngle()*180/3.14) < 10) && (ladder11->frontSensor->distance() < 20);
 }
 
+/**
+ * Stops the robot's motion and prints a notification to the LCD
+ **/
 void ApproachFlame::end() {
 	ladder11->lcd->print("Flame ahead");
 	ladder11->drivetrain->stop();
+<<<<<<< HEAD
   digitalWrite(32, LOW);
   digitalWrite(34, LOW);
   digitalWrite(46, LOW);
   digitalWrite(48, LOW);
 }
+=======
+}
+>>>>>>> refs/remotes/origin/master
