@@ -7,7 +7,7 @@
 
 class RetreatToWall : public Command {
 public:
-  RetreatToWall(float setpoint);
+  RetreatToWall();
   void initialize();
   void execute();
   bool isFinished();
@@ -16,8 +16,7 @@ private:
   Robot* ladder11;
   bool isTurning = false;
   long turnStartTime;
-  float _setpoint, turnSpeed;
-  float distSpeed;
+  float turnSpeed, distSpeed;
   double xDelta, yDelta;
   int thetaDesired, angleDelta;
 };

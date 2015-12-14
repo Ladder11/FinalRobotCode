@@ -1,10 +1,15 @@
+/**
+ * Command to turn back to the position at which we first saw the candle. We know there will be no obstacles or walls along this path
+ **/
 #include "RetreatToWall.h"
 
-RetreatToWall::RetreatToWall(float setpoint) : Command("Retreat to Wall"){
-	ladder11 = Robot::getInstance();
-	_setpoint = setpoint;
+RetreatToWall::RetreatToWall() : Command("Retreat to Wall"){
+  ladder11 = Robot::getInstance();
 }
 
+/**
+ * Calculates the orientation from the current location to the point where the robot first saw the candle
+ **/
 void RetreatToWall::initialize() {
   // calculate theta to new position
   xDelta = ladder11->drivetrain->getCandleFoundX()-ladder11->drivetrain->getXOdoEst();
@@ -14,15 +19,18 @@ void RetreatToWall::initialize() {
   // drive to that position
 }
 
+/**
+ * Turns to the correct orientation using a P controller, with max/min speed caps
+ **/
 void RetreatToWall::execute() {
   angleDelta = thetaDesired-(ladder11->drivetrain->getOrientOdoEst())*1000;
   turnSpeed = -0.075*angleDelta;
   if (turnSpeed > 0) {
-    if (turnSpeed < 25) {
+    if (turnSpeed < 35) {
       turnSpeed = 35;
     }
   } else {
-    if (turnSpeed > -25) {
+    if (turnSpeed > -35) {
       turnSpeed = -35;
     }
   }
@@ -30,6 +38,9 @@ void RetreatToWall::execute() {
   ladder11->drivetrain->updateRobotPos();
 }
 
+/**
+ * Finishes when the robot is within 0.075 radians, or about 4 degrees
+ **/
 bool RetreatToWall::isFinished() {
 	return angleDelta<75 && angleDelta>-75;
 }
