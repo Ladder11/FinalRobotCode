@@ -27,6 +27,12 @@ void WallFollowToStart::execute() {
         output = 9*distErr + 3*(prevDistErr-distErr);
         prevDistErr = distErr;
         turnSpeed = constrain(output, -40, 40);
+	if (ladder11->leftSensor->distance() > (_setpoint + 2) && ladder11->leftSensor->distance() < (_setpoint + 5)) {
+	  turnSpeed = constrain(turnSpeed, -20, 20);
+	  ladder11->telemetry->sendStatus(STATUS_RETURN_HOME, SUBSTATUS_TOOFARFROMWALL);
+	} else {
+	  ladder11->telemetry->sendStatus(STATUS_RETURN_HOME, SUBSTATUS_WALLFOLLOW);
+	}
         ladder11->drivetrain->drive(3.5, -turnSpeed);
     } else { // If the robot sees a wall, or the robot is already turning
       if (isTurning) {
