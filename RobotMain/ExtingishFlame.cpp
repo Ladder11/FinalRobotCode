@@ -13,6 +13,7 @@ ExtingishFlame::ExtingishFlame() : Command("Extingish Flame"){
  * Sets up the servo object and arms the ESC
  **/
 void ExtingishFlame::initialize() {
+	ladder11->telemetry->sendStatus(STATUS_EXT_FLAME, 0);
 	prop.attach(PROP_PIN, 1000, 2000);
 	prop.write(180);
     delay(40);

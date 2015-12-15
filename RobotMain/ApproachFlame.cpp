@@ -13,7 +13,9 @@ ApproachFlame::ApproachFlame() : Command("Approach Flame"){
 	ladder11 = Robot::getInstance();
 }
 
-void ApproachFlame::initialize() {}
+void ApproachFlame::initialize() {
+  ladder11->telemetry->sendStatus(STATUS_APPROACH_FLAME, 0);
+}
 
 /**
  * Uses a proportional controller for both linear speed and turn rate based on distance and angle to the candle

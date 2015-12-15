@@ -10,6 +10,7 @@ RetreatToWallStep2::RetreatToWallStep2() : Command("Retreat to Wall"){
  * Gets the destination coordinates
  **/
 void RetreatToWallStep2::initialize() {
+  ladder11->telemetry->sendStatus(STATUS_RETURN_HOME, SUBSTATUS_DRIVING_TO_CANDLE_SEEN_POS);
   xDesired=ladder11->drivetrain->getCandleFoundX();
   yDesired=ladder11->drivetrain->getCandleFoundY();
 }

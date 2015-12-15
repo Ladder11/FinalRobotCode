@@ -14,7 +14,9 @@ WallFollow::WallFollow(float setpoint) : Command("Wall Follow"){
 	_setpoint = setpoint;
 }
 
-void WallFollow::initialize() {}
+void WallFollow::initialize() {
+  ladder11->telemetry->sendStatus(STATUS_WALLFOLLOW, 0);
+}
 
 /** 
  * Uses proportional controller to control turn rate

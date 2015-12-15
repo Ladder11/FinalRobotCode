@@ -35,8 +35,12 @@ const uint8_t STATUS_APPROACH_FLAME = 0x03;
 const uint8_t STATUS_CALC_FLAME_LOC = 0x04;
 const uint8_t STATUS_EXT_FLAME = 0x05;
 const uint8_t STATUS_RETURN_HOME = 0x06;
+const uint8_t STATUS_HOME = 0x07;
 
 const uint8_t SUBSTATUS_TOOFARFROMWALL = 0x01;
+const uint8_t SUBSTATUS_TURNING_TO_CANDLE_SEEN_POS = 0x02;
+const uint8_t SUBSTATUS_DRIVING_TO_CANDLE_SEEN_POS = 0x03;
+const uint8_t SUBSTATUS_WALLFOLLOW = 0x04;
 
 //Pins for the Serial3 ports
 const int SERIAL3_RX_PIN = 15;

@@ -11,6 +11,7 @@ RetreatToWall::RetreatToWall() : Command("Retreat to Wall"){
  * Calculates the orientation from the current location to the point where the robot first saw the candle
  **/
 void RetreatToWall::initialize() {
+  ladder11->telemetry->sendStatus(STATUS_RETURN_HOME, SUBSTATUS_TURNING_TO_CANDLE_SEEN_POS);
   // calculate theta to new position
   xDelta = ladder11->drivetrain->getCandleFoundX()-ladder11->drivetrain->getXOdoEst();
   yDelta = ladder11->drivetrain->getCandleFoundY()-ladder11->drivetrain->getYOdoEst();
