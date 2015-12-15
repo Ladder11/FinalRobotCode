@@ -16,6 +16,11 @@ public:
 private:
   Robot* ladder11;
   Servo prop;
+  unsigned long timeOutTime = 3000;
+  unsigned long twitchingTime = 0;
+  bool twitching = false;
+  bool flameOut = false;
+  bool timedOut = false;
 };
 
 
