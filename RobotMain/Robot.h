@@ -15,6 +15,7 @@
 #include <LiquidCrystal.h>
 #include "BlinkyLights.h"
 #include "Ladder11Telemetry.h"
+#include "Gyro.h"
 
 class Robot {
 public:
@@ -27,6 +28,7 @@ public:
   BlinkyLights* lights = new BlinkyLights();
   Ladder11Telemetry* telemetry = new Ladder11Telemetry();
   LiquidCrystal* lcd = new LiquidCrystal(40, 41, 42, 43, 44, 45);
+  Gyro* gyro = new Gyro();
 
   void initializeSubsystems();
 
