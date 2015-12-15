@@ -47,7 +47,7 @@ void WallFollow::execute() {
  * Returns true when the flame sensor detects a flame
  **/
 bool WallFollow::isFinished() {
-  return ladder11->flameSense->isFlame() && (ladder11->rightSensor->distance() > 20) && ((cameraHeight+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<17);
+  return ladder11->flameSense->isFlame() /* && (ladder11->rightSensor->distance() > 15)*/ && ((cameraHeight+ladder11->flameSense->flameHeightSin()*(ladder11->frontSensor->distance()))<17);
 }
 
 /**
