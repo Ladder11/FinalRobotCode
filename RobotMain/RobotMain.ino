@@ -30,8 +30,8 @@ Robot* ladder11 = Robot::getInstance();
 void setup() {
   ladder11->initializeSubsystems();
   scheduler->addParallelCommand(new PersistentUpdateTelemetry());
-  scheduler->addParallelCommand(new PersistentUpdateDrive());
   scheduler->addCommand(new WaitForStart());
+  scheduler->addParallelCommand(new PersistentUpdateDrive());
   scheduler->addParallelCommand(new PersistentBlink());
   scheduler->addCommand(new WallFollow(8.0));
    
