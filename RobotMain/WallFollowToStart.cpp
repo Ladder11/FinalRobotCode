@@ -56,6 +56,6 @@ bool WallFollowToStart::isFinished() {
 }
 
 void WallFollowToStart::end() {
-	ladder11->lcd->print("Done wall");
+	ladder11->lcd->print("Done");
 	ladder11->drivetrain->stop();
 }
