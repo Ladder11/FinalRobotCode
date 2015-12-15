@@ -20,12 +20,16 @@
 #include "RetreatToWall.h"
 #include "RetreatToWallStep2.h"
 #include "PersistentBlink.h"
+#include "WaitForStart.h"
+#include "PersistentUpdateTelemetry.h"
 
 Scheduler* scheduler = Scheduler::getInstance();
 Robot* ladder11 = Robot::getInstance();
 
 void setup() {
   ladder11->initializeSubsystems();
+  scheduler->addParallelCommand(new PersistentUpdateTelemetry());
+  scheduler->addCommand(new WaitForStart());
   scheduler->addParallelCommand(new PersistentBlink());
   scheduler->addCommand(new WallFollow(8.0));
    
