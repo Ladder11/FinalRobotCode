@@ -38,8 +38,8 @@ void WallFollow::execute() {
     ladder11->drivetrain->drive(0, 40);
   }
 
-  ladder11->lcd->clear();
-  ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst());
+//  ladder11->lcd->clear();
+//  ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst());
 
 }
 

@@ -40,8 +40,8 @@ void RetreatToWall::execute() {
       turnSpeed = -45;
     }
   }
-  ladder11->lcd->clear();
-  ladder11->lcd->print(angleDelta);
+//  ladder11->lcd->clear();
+//  ladder11->lcd->print(angleDelta);
   ladder11->drivetrain->drive(0, -0.075*(angleDelta));
 //  ladder11->drivetrain->updateRobotPos();
 }

@@ -33,11 +33,11 @@ void RetreatToWallStep2::execute() {
     }
   }
   ladder11->drivetrain->drive(moveSpeed, -0.1*angleDelta);
-  ladder11->lcd->clear();
-  ladder11->lcd->setCursor(0,0);
-  ladder11->lcd->print(moveSpeed*20);
-  ladder11->lcd->setCursor(0,1);
-  ladder11->lcd->print(angleDelta);
+//  ladder11->lcd->clear();
+//  ladder11->lcd->setCursor(0,0);
+//  ladder11->lcd->print(moveSpeed*20);
+//  ladder11->lcd->setCursor(0,1);
+//  ladder11->lcd->print(angleDelta);
   //ladder11->lcd->setCursor(5,1);
   //ladder11->lcd->print(yDelta);
 }
