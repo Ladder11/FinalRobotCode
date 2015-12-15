@@ -23,7 +23,7 @@ void PersistentUpdateDrive::execute() {
 	if (getTime() > triggerTime) {
 		ladder11->telemetry->sendRobotPose(ladder11->drivetrain->getXOdoEst(), ladder11->drivetrain->getYOdoEst(), ladder11->drivetrain->getOrientOdoEst());
 		ladder11->telemetry->sendGyroOrientation(ladder11->gyro->getGyro());
-		triggerTime = getTime() + 500;
+		triggerTime = getTime() + 100;
 	}
 }
 
