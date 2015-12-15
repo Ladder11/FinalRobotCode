@@ -41,6 +41,7 @@ const uint8_t SUBSTATUS_TOOFARFROMWALL = 0x01;
 const uint8_t SUBSTATUS_TURNING_TO_CANDLE_SEEN_POS = 0x02;
 const uint8_t SUBSTATUS_DRIVING_TO_CANDLE_SEEN_POS = 0x03;
 const uint8_t SUBSTATUS_WALLFOLLOW = 0x04;
+const uint8_t SUBSTATUS_NONE = 0xFF;
 
 //Pins for the Serial3 ports
 const int SERIAL3_RX_PIN = 15;

@@ -14,7 +14,7 @@ CalculateFlamePosition::CalculateFlamePosition() : Command("Calculate Flame Posi
  **/
 void CalculateFlamePosition::initialize() {
 	flameDistance = ladder11->frontSensor->distance();
-	ladder11->telemetry->sendStatus(STATUS_CALC_FLAME_LOC, 0);
+	ladder11->telemetry->sendStatus(STATUS_CALC_FLAME_LOC, SUBSTATUS_NONE);
 	candleXPos = ladder11->drivetrain->getXOdoEst() + sin(ladder11->drivetrain->getOrientOdoEst())*(flameDistance+6.5);
 	candleYPos = ladder11->drivetrain->getYOdoEst() + cos(ladder11->drivetrain->getOrientOdoEst())*(flameDistance+6.5);
 	candleZPos = cameraHeight+ladder11->flameSense->flameHeightSin()*flameDistance;

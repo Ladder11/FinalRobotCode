@@ -14,7 +14,7 @@ ApproachFlame::ApproachFlame() : Command("Approach Flame"){
 }
 
 void ApproachFlame::initialize() {
-  ladder11->telemetry->sendStatus(STATUS_APPROACH_FLAME, 0);
+  ladder11->telemetry->sendStatus(STATUS_APPROACH_FLAME, SUBSTATUS_NONE);
 }
 
 /**

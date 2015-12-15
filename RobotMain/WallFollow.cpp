@@ -15,7 +15,7 @@ WallFollow::WallFollow(float setpoint) : Command("Wall Follow"){
 }
 
 void WallFollow::initialize() {
-  ladder11->telemetry->sendStatus(STATUS_WALLFOLLOW, 0);
+  ladder11->telemetry->sendStatus(STATUS_WALLFOLLOW, SUBSTATUS_NONE);
 }
 
 /** 
