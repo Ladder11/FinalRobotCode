@@ -10,7 +10,7 @@
   **/
 Ladder11Telemetry::Ladder11Telemetry() {
 	Serial3.begin(115200);
-	Serial.begin(115200);
+	//Serial.begin(115200);
 	pinMode(SERIAL3_RX_PIN, INPUT_PULLUP);
     pinMode(SERIAL3_TX_PIN, INPUT_PULLUP);
 	shouldStartFlag = false;
@@ -256,7 +256,6 @@ void Ladder11Telemetry::readPacket() {
     if(!processingPacket) {
     	//Check if the header bytes of a new packet are available (start byte & length byte)
     	if(Serial3.available() >= 2) {
-    		Serial.println("Reading in Header bytes");
     		readBuff[0] = Serial3.read();
     		readBuff[1] = Serial3.read();
     		processingPacket = true;
@@ -268,18 +267,10 @@ void Ladder11Telemetry::readPacket() {
 
     //Try to process the rest of the packet
     if(Serial3.available() >= (readBuff[1]-2)) {
-    	Serial.println("Reading in Data bytes");
     	//The rest of the packet is available, read it in
     	for(int i=2, n=(readBuff[1]); i<n; i++) {
             readBuff[i] = Serial3.read();
     	}
-    	Serial.println("Finished Reading packet");
-    	Serial.print("Packet received: {");
-	    for(int i=0; i<10; i++) {
-		    Serial.print(readBuff[i]);
-		    Serial.print(",");
-	    }
-	    Serial.println("}");
     	//Have the packet, now parse it
     	parsePacket(readBuff, readBuff[1]);
     	processingPacket = false;
@@ -293,26 +284,14 @@ void Ladder11Telemetry::readPacket() {
   * @param length Length of the packet to parse
   **/
 void Ladder11Telemetry::parsePacket(uint8_t packet[], uint8_t length) {
-	Serial.print("Packet received: {");
-	for(int i=0; i<(length); i++) {
-		Serial.print(packet[i]);
-		Serial.print(",");
-	}
-	Serial.println("}");
-	Serial.println("Validating Checksum");
 	if(packet[length-1] != calcChecksum(packet, length)) {
 		//Checksum failed, take no action
-		Serial.println("Checksum failed");
 		return;
 	}
-	Serial.println("Packet passed Checksum");
 	switch(packet[2]) {
 		case COMMAND_START:
-			Serial.println("Received Start Command");
 			shouldStartFlag = true;
 		    break;
-		case COMMAND_STOP:
-		    Serial.println("Received Stop Command");
 		    shouldStartFlag = false;
 		    break;
 	}
