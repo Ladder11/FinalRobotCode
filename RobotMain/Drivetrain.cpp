@@ -34,7 +34,7 @@ void Drivetrain::drive(float velocity, float turnVelocity) {
 	//Serial.println(V_l*_speedConversion);
 	rightMotor->setRPM(V_r*speedConversion);
 	leftMotor->setRPM(V_l*speedConversion);
-	updateRobotPos();
+	//updateRobotPos();
 }
 
 /**
