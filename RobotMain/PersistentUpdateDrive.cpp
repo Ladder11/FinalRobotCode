@@ -15,7 +15,7 @@ void PersistentUpdateDrive::initialize() {
 }
 
 /** 
- * Blinks the LED strip if it is supposed to, just the yellow turn signals otherwise
+ * Always updates the robot's position, and sends a pose update every 500ms
  **/
 void PersistentUpdateDrive::execute() {
 	ladder11->drivetrain->updateRobotPos();
