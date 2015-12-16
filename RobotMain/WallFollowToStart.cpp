@@ -26,7 +26,7 @@ void WallFollowToStart::execute() {
         distErr = _setpoint-ladder11->leftSensor->distance();
         output = 9*distErr + 3*(prevDistErr-distErr);
         prevDistErr = distErr;
-        turnSpeed = constrain(output, -40, 40);
+        turnSpeed = constrain(output, -40, 40); // Constrains turn rate for making corners around outside wall
       	if (ladder11->leftSensor->distance() > (_setpoint + 2) && ladder11->leftSensor->distance() < (_setpoint + 5)) {
       	  turnSpeed = constrain(turnSpeed, -15, 15);
       	  ladder11->telemetry->sendStatus(STATUS_RETURN_HOME, SUBSTATUS_TOOFARFROMWALL);
