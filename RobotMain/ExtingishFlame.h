@@ -21,6 +21,7 @@ private:
   bool twitching = false;
   bool flameOut = false;
   bool timedOut = false;
+  bool delaying = false;
 };
 
 

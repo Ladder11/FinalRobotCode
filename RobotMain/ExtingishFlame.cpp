@@ -33,7 +33,7 @@ void ExtingishFlame::execute() {
 		timedOut = false;
 		timeOutTime = getTime() + 3000;
 	    } else { // If there's not a flame
-		if (!twitching) { // If it's not twitching, start twitching
+		if (!twitching && !delaying) { // If it's not twitching, start twitching
 		  twitching = true;
 		  twitchingTime = getTime() + 500;
 		  prop.write(40);
@@ -42,7 +42,12 @@ void ExtingishFlame::execute() {
 		  //ladder11->lcd->clear();
 		  //ladder11->lcd->print("Twitching");
 		}
-		if (getTime() > twitchingTime) { // If it's done twitching
+		if (getTime() > twitchingTime) {
+		  twitching = false;
+		  delaying = true;
+		  prop.write(0);
+		}
+		if (getTime() > twitchingTime+1000) { // If it's done twitching
 		  twitching = false;
 		  prop.write(0); // Turn fan off
 		  if (!ladder11->flameSense->isFlame()) { // If there is still no flame after the blade is out of the way, the fire is out 
@@ -51,6 +56,8 @@ void ExtingishFlame::execute() {
 		  } else { // if there is a flame, turn the fan back on
 		    timeOutTime = getTime() + 3000;
 		    timedOut = false;
+		    twitching = false;
+		    delaying = false;
 		  }
 		}
 	    }
