@@ -40,7 +40,7 @@ void setup() {
   scheduler->addCommand(new ExtingishFlame());
   scheduler->addCommand(new RetreatToWall());
   scheduler->addCommand(new RetreatToWallStep2());
-  scheduler->addCommand(new WallFollowToStart(8.0));
+  scheduler->addCommand(new WallFollowToStart(10.0));
 }
 
 void loop() {
