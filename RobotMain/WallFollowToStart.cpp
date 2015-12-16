@@ -57,13 +57,13 @@ void WallFollowToStart::execute() {
  * Finished when the robot is within 7" of the origin
  **/
 bool WallFollowToStart::isFinished() {
-	ladder11->lcd->clear();
-	ladder11->lcd->print(sqrt(sq(ladder11->drivetrain->getXOdoEst())+ladder11->drivetrain->getYOdoEst()));
+//	ladder11->lcd->clear();
+//	ladder11->lcd->print(sqrt(sq(ladder11->drivetrain->getXOdoEst())+ladder11->drivetrain->getYOdoEst()));
 	return sqrt(sq(ladder11->drivetrain->getXOdoEst())+ladder11->drivetrain->getYOdoEst())<5;
 }
 
 void WallFollowToStart::end() {
-	ladder11->lcd->print("Done");
+//	ladder11->lcd->print("Done");
 	ladder11->drivetrain->stop();
 	ladder11->telemetry->sendStatus(STATUS_HOME, 0);
 }

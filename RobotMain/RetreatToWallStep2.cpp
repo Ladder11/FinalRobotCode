@@ -52,12 +52,12 @@ bool RetreatToWallStep2::isFinished() {
 
 void RetreatToWallStep2::end() {
   ladder11->drivetrain->stop();
-  ladder11->lcd->clear();
+/*  ladder11->lcd->clear();
   ladder11->lcd->setCursor(0, 0);
   ladder11->lcd->print(thetaDesired, DEC);
   ladder11->lcd->setCursor(0, 1);
   ladder11->lcd->print(ladder11->drivetrain->getOrientOdoEst()*1000, DEC);
   ladder11->lcd->setCursor(8, 1);
-  ladder11->lcd->print(angleDelta, DEC);
+  ladder11->lcd->print(angleDelta, DEC);*/
   
 }

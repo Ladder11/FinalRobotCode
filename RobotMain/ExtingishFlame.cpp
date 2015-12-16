@@ -39,15 +39,15 @@ void ExtingishFlame::execute() {
 		  prop.write(40);
 		} else {
 		  prop.write(40);
-		  ladder11->lcd->clear();
-		  ladder11->lcd->print("Twitching");
+		  //ladder11->lcd->clear();
+		  //ladder11->lcd->print("Twitching");
 		}
 		if (getTime() > twitchingTime) { // If it's done twitching
 		  twitching = false;
 		  prop.write(0); // Turn fan off
 		  if (!ladder11->flameSense->isFlame()) { // If there is still no flame after the blade is out of the way, the fire is out 
 		    flameOut = true;
-		    ladder11->lcd->print("Flame out");
+		    //ladder11->lcd->print("Flame out");
 		  } else { // if there is a flame, turn the fan back on
 		    timeOutTime = getTime() + 3000;
 		    timedOut = false;
