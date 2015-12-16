@@ -47,7 +47,7 @@ void RetreatToWallStep2::execute() {
  * Finishes if the robot gets close to the correct position, or the front sensor sees the wall
  **/
 bool RetreatToWallStep2::isFinished() {
-	return sqrt(sq(xDelta)+sq(yDelta))<6|| ladder11->frontSensor->distance()<10 || ladder11->leftSensor->distance()<14;
+	return sqrt(sq(xDelta)+sq(yDelta))<2 || ladder11->frontSensor->distance()<10; //|| ladder11->leftSensor->distance()<14;
 }
 
 void RetreatToWallStep2::end() {
