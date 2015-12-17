@@ -1,13 +1,13 @@
-#ifndef WALLFOLLOW
-#define WALLFOLLOW
+#ifndef WALLFOLLOWTOSTART
+#define WALLFOLLOWTOSTART
 #include <Arduino.h>
 #include "Robot.h"
 #include "Command.h"
 
 
-class WallFollow : public Command {
+class WallFollowToStart : public Command {
 public:
-  WallFollow(float setpoint);
+  WallFollowToStart(float setpoint);
   void initialize();
   void execute();
   bool isFinished();

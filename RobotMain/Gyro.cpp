@@ -36,7 +36,12 @@ void Gyro::updateGyro() {
   //gyro_x -= gdriftx*Dt;
  
   gyro_xcumulative += gyro_x;
-
+  if (gyro_xcumulative > 180) {
+    gyro_xcumulative -= 360;
+  }
+  if (gyro_xcumulative < -180) {
+    gyro_xcumulative += 360;
+  }
   prevTime=millis(); //reset prevTime
 }
 

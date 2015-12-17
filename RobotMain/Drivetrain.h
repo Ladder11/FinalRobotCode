@@ -14,9 +14,13 @@ public:
   double getYOdoEst();
   double getOrientOdoEst();
   void updateRobotPos();
+  double getCandleFoundX();
+  double getCandleFoundY();
+  void setCandleFoundY();
+  void setCandleFoundX();
 private:
   float V_r, V_l, prevVel, currAngle, currLeft, currRight, prevLeft, prevRight, leftDelta, rightDelta, robotDelta;
-  double xPos, yPos, _theta;
+  double xPos, yPos, _theta, candleFoundX, candleFoundY;
   RegulatedMotor* leftMotor;
   RegulatedMotor* rightMotor;
 };

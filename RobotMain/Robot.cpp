@@ -29,4 +29,5 @@ void Robot::initializeSubsystems() {
   flameSense->initialize();
   lights->initialize();
   lcd->begin(16, 2);
+  gyro->initialize();
 }

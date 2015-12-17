@@ -14,9 +14,10 @@ CalculateFlamePosition::CalculateFlamePosition() : Command("Calculate Flame Posi
  **/
 void CalculateFlamePosition::initialize() {
 	flameDistance = ladder11->frontSensor->distance();
+	ladder11->telemetry->sendStatus(STATUS_CALC_FLAME_LOC, SUBSTATUS_NONE);
 	candleXPos = ladder11->drivetrain->getXOdoEst() + sin(ladder11->drivetrain->getOrientOdoEst())*(flameDistance+6.5);
 	candleYPos = ladder11->drivetrain->getYOdoEst() + cos(ladder11->drivetrain->getOrientOdoEst())*(flameDistance+6.5);
-	candleZPos = 8.0+ladder11->flameSense->flameHeightSin()*flameDistance;
+	candleZPos = cameraHeight+ladder11->flameSense->flameHeightSin()*flameDistance;
 
 }
 
@@ -37,12 +38,13 @@ bool CalculateFlamePosition::isFinished() {
 void CalculateFlamePosition::end() {
 	ladder11->lcd->clear();
 	ladder11->lcd->setCursor(0, 0);
-	ladder11->lcd->print("X: ");
-	ladder11->lcd->print(candleXPos, DEC);
+	ladder11->lcd->print("X:");
+	ladder11->lcd->print(candleXPos);
 	ladder11->lcd->setCursor(8, 0);
-	ladder11->lcd->print(" Y: ");
-	ladder11->lcd->print(candleYPos, DEC);
+	ladder11->lcd->print(" Y:");
+	ladder11->lcd->print(candleYPos);
 	ladder11->lcd->setCursor(0, 1);
-	ladder11->lcd->print("Z: ");
-	ladder11->lcd->print(candleZPos, DEC);
+	ladder11->lcd->print("Z:");
+	ladder11->lcd->print(candleZPos);
+	ladder11->telemetry->sendFlameLoc(candleXPos, candleYPos, candleZPos);
 }

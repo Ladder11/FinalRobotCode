@@ -18,6 +18,7 @@ void PersistentBlink::initialize() {
  * Blinks the LED strip if it is supposed to, just the yellow turn signals otherwise
  **/
 void PersistentBlink::execute() {
+  if (ladder11->lights->getLightsEnabled()) {
 	if (ladder11->lights->getLightBarBlink()) {
 		if (getTime()%500 > 250) {
 			ladder11->lights->leftBar(true);
@@ -39,8 +40,12 @@ void PersistentBlink::execute() {
 			ladder11->lights->rightBlinkers(false);
 		}
 	}
-
-
+  } else {
+	ladder11->lights->leftBar(false);
+	ladder11->lights->rightBar(false);
+	ladder11->lights->leftBlinkers(false);
+	ladder11->lights->rightBlinkers(false);
+  }
 }
 
 /**

@@ -1,4 +1,4 @@
-/** 
+/**
  * Subsystem that handles the various LEDs on the robot
  * @author Hans Johnson
  * @date Dec. 2015
@@ -103,4 +103,12 @@ void BlinkyLights::setLightBarBlink() {
  **/
 bool BlinkyLights::getLightBarBlink() {
 	return lightBar;
+}
+
+void BlinkyLights::disableLights() {
+	lightsEnabled = false;
+}
+
+bool BlinkyLights::getLightsEnabled() {
+	return lightsEnabled;
 }

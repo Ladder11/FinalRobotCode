@@ -13,7 +13,10 @@ class BlinkyLights {
 		void rightBlinkers(bool on);
 		void setLightBarBlink();
 		bool getLightBarBlink();
+		void disableLights();
+		bool getLightsEnabled();
 	private:
 		bool lightBar = false;
+		bool lightsEnabled = true;
 };
 #endif
